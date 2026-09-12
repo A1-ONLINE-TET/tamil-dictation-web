@@ -1,0 +1,56 @@
+{
+  "grade": 5,
+  "displayName": "5th Standard",
+  "tamilName": "ஐந்தாம் வகுப்பு",
+  "icon": "📗",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "நாடும் நகரமும்",
+      "words": [
+        { "id": "g5_l1_1",  "word": "தலைநகரம்",         "meaning": "நாட்டின் முதன்மை நகரம்",      "meaningEn": "Capital city" },
+        { "id": "g5_l1_2",  "word": "தமிழ்நாடு",         "meaning": "தமிழர்களின் மாநிலம்",        "meaningEn": "Tamil Nadu" },
+        { "id": "g5_l1_3",  "word": "சென்னை",            "meaning": "தமிழ்நாட்டின் தலைநகரம்",     "meaningEn": "Chennai" },
+        { "id": "g5_l1_4",  "word": "மதுரை",             "meaning": "கோயில்களின் நகரம்",           "meaningEn": "Madurai" },
+        { "id": "g5_l1_5",  "word": "திருச்சிராப்பள்ளி", "meaning": "காவிரி கரை நகரம்",           "meaningEn": "Trichy" },
+        { "id": "g5_l1_6",  "word": "கோயம்புத்தூர்",    "meaning": "தமிழ்நாட்டின் வணிக நகரம்",   "meaningEn": "Coimbatore" },
+        { "id": "g5_l1_7",  "word": "குமரி",             "meaning": "இந்தியாவின் தென் கோடி",       "meaningEn": "Kanyakumari" },
+        { "id": "g5_l1_8",  "word": "பாரதம்",            "meaning": "நம் தேசம்",                   "meaningEn": "India" },
+        { "id": "g5_l1_9",  "word": "குடியரசு",          "meaning": "மக்களால் நடத்தப்படும் அரசு", "meaningEn": "Republic" },
+        { "id": "g5_l1_10", "word": "ஜனநாயகம்",          "meaning": "மக்கள் ஆட்சி முறை",          "meaningEn": "Democracy" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "பண்டிகைகள்",
+      "words": [
+        { "id": "g5_l2_1",  "word": "பொங்கல்",            "meaning": "தமிழரின் அறுவடை திருவிழா",  "meaningEn": "Pongal" },
+        { "id": "g5_l2_2",  "word": "தீபாவளி",            "meaning": "விளக்குகளின் திருவிழா",     "meaningEn": "Diwali" },
+        { "id": "g5_l2_3",  "word": "கிறிஸ்துமஸ்",        "meaning": "கிறிஸ்தவர்களின் திருவிழா", "meaningEn": "Christmas" },
+        { "id": "g5_l2_4",  "word": "ரம்ஜான்",            "meaning": "முஸ்லிம்களின் திருவிழா",    "meaningEn": "Ramzan" },
+        { "id": "g5_l2_5",  "word": "நவராத்திரி",         "meaning": "ஒன்பது இரவுகள் திருவிழா",   "meaningEn": "Navaratri" },
+        { "id": "g5_l2_6",  "word": "விநாயகர் சதுர்த்தி", "meaning": "விநாயகர் பிறந்த நாள் திருவிழா", "meaningEn": "Ganesh Chaturthi", "category": "sentence" },
+        { "id": "g5_l2_7",  "word": "குடியரசு தினம்",     "meaning": "அரசியலமைப்பு நினைவு நாள்",  "meaningEn": "Republic Day", "category": "sentence" },
+        { "id": "g5_l2_8",  "word": "சுதந்திர தினம்",     "meaning": "விடுதலை நினைவு நாள்",        "meaningEn": "Independence Day", "category": "sentence" },
+        { "id": "g5_l2_9",  "word": "ஆசிரியர் தினம்",    "meaning": "ஆசிரியர்களுக்கான நாள்",      "meaningEn": "Teachers Day", "category": "sentence" },
+        { "id": "g5_l2_10", "word": "குழந்தைகள் தினம்",  "meaning": "குழந்தைகளுக்கான நாள்",       "meaningEn": "Childrens Day", "category": "sentence" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "போக்குவரத்து",
+      "words": [
+        { "id": "g5_l3_1",  "word": "தொடர்வண்டி",  "meaning": "தண்டவாளத்தில் ஓடும் வாகனம்",  "meaningEn": "Train" },
+        { "id": "g5_l3_2",  "word": "விமானம்",      "meaning": "வானில் பறக்கும் வாகனம்",       "meaningEn": "Aeroplane" },
+        { "id": "g5_l3_3",  "word": "கப்பல்",       "meaning": "கடலில் செல்லும் வாகனம்",       "meaningEn": "Ship" },
+        { "id": "g5_l3_4",  "word": "பேருந்து",     "meaning": "பலர் பயணிக்கும் வாகனம்",      "meaningEn": "Bus" },
+        { "id": "g5_l3_5",  "word": "மோட்டார் சைக்கிள்", "meaning": "இரு சக்கர வாகனம்",      "meaningEn": "Motorcycle" },
+        { "id": "g5_l3_6",  "word": "சைக்கிள்",    "meaning": "மிதிக்கும் இரு சக்கர வாகனம்", "meaningEn": "Bicycle" },
+        { "id": "g5_l3_7",  "word": "கார்",         "meaning": "நான்கு சக்கர வாகனம்",          "meaningEn": "Car" },
+        { "id": "g5_l3_8",  "word": "ஆட்டோ",       "meaning": "மூன்று சக்கர வாகனம்",          "meaningEn": "Auto rickshaw" },
+        { "id": "g5_l3_9",  "word": "படகு",         "meaning": "ஆற்றில் செல்லும் வாகனம்",     "meaningEn": "Boat" },
+        { "id": "g5_l3_10", "word": "ஹெலிகாப்டர்", "meaning": "இடத்திலேயே மேலே பறக்கும் வாகனம்", "meaningEn": "Helicopter" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#B71C1C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="தமிழ் பயிற்சி">
+<title>தமிழ் எழுத்துப்பயிற்சி</title>
+<link rel="manifest" href="manifest.json">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --red:#B71C1C;--red2:#D32F2F;--red3:#7B1414;
+  --gold:#FFB300;--dgold:#FF8F00;
+  --lgreen:#4CAF50;--bg:#FFF8E1;
+  --wrong:#F44336;--shadow:0 4px 20px rgba(0,0,0,.12);--r:18px
+}
+body{font-family:'Noto Sans Tamil',Arial,sans-serif;background:var(--bg);min-height:100vh;overflow-x:hidden}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+
+/* ── SPLASH ── */
+#splash{background:linear-gradient(160deg,var(--red),var(--red3));align-items:center;justify-content:center;gap:20px}
+.sp-logo{width:120px;height:120px;background:#fff;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:64px;box-shadow:0 12px 40px rgba(0,0,0,.3);animation:pop .7s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+.sp-title{font-size:26px;font-weight:700;color:#fff;text-align:center;animation:fd 1s ease .3s both}
+.sp-sub{font-size:14px;color:rgba(255,255,255,.7);animation:fd 1s ease .5s both}
+.sp-spin{width:38px;height:38px;border:3px solid rgba(255,179,0,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite,fd 1s ease .7s both}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fd{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SETUP ── */
+#setup{background:linear-gradient(180deg,var(--red) 0%,var(--bg) 35%)}
+.su-hdr{padding:50px 24px 20px;text-align:center}
+.su-hdr h1{font-size:28px;font-weight:700;color:#fff}
+.su-hdr p{color:rgba(255,255,255,.8);margin-top:6px;font-size:14px}
+.su-body{padding:14px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card{background:#fff;border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.card h3{color:var(--red);font-size:15px;font-weight:600;margin-bottom:12px}
+.av-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.av-btn{aspect-ratio:1;font-size:26px;border-radius:12px;border:2.5px solid transparent;background:#f5f5f5;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.av-btn.sel{background:rgba(255,179,0,.2);border-color:var(--gold);transform:scale(1.1)}
+.ni{width:100%;border:2px solid #e0e0e0;border-radius:14px;padding:14px 16px;font-size:18px;font-family:inherit;outline:none;transition:border .2s;background:#fafafa}
+.ni:focus{border-color:var(--red);background:#fff}
+.gr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.gr-btn{padding:12px 6px;border-radius:12px;border:1.5px solid #e0e0e0;background:#f5f5f5;font-size:18px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
+.gr-btn.sel{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-color:transparent}
+.btn-red{background:var(--red);color:#fff;border:none;border-radius:16px;padding:17px;font-size:17px;font-weight:700;width:100%;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(183,28,28,.4);transition:transform .1s}
+.btn-red:active{transform:scale(.97)}
+
+/* ── APPBAR ── */
+.appbar{display:flex;align-items:center;gap:12px;padding:50px 16px 16px;background:var(--red);color:#fff;flex-shrink:0}
+.appbar.slim{padding:16px}
+.bk{background:none;border:none;color:#fff;font-size:26px;cursor:pointer;padding:2px 6px;line-height:1}
+.ab-title{font-size:18px;font-weight:700;flex:1}
+.ab-right{background:rgba(255,255,255,.2);border:none;border-radius:10px;padding:8px 12px;color:#fff;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit}
+
+/* ── HOME ── */
+#home{background:var(--bg)}
+.h-hdr{background:linear-gradient(135deg,var(--red),var(--red2));padding:50px 20px 20px}
+.h-row{display:flex;align-items:center;gap:14px}
+.av-disp{width:56px;height:56px;background:rgba(255,255,255,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:32px}
+.h-name{font-size:20px;font-weight:700;color:#fff}
+.h-grade{font-size:13px;color:rgba(255,255,255,.75);margin-top:2px}
+.h-sw{margin-left:auto;background:rgba(255,255,255,.2);border:none;border-radius:10px;padding:8px 12px;color:#fff;cursor:pointer;font-size:20px}
+.stats-row{display:flex;gap:10px;padding:14px}
+.sc{flex:1;background:#fff;border-radius:14px;padding:12px 8px;text-align:center;box-shadow:var(--shadow)}
+.sc .si{font-size:20px}
+.sc .sv{font-size:16px;font-weight:700;color:var(--red)}
+.sc .sl{font-size:11px;color:#888}
+.sec{padding:6px 20px 10px;font-size:18px;font-weight:700;color:var(--red)}
+.gr-home{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 28px}
+.gr-card{background:#fff;border-radius:var(--r);padding:16px;text-align:center;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s}
+.gr-card:active{transform:scale(.97)}
+.gr-card .gi{font-size:32px;margin-bottom:6px}
+.gr-card .gn{font-size:14px;font-weight:600;color:var(--red)}
+.gr-card .gc{font-size:12px;color:#888;margin-top:2px}
+
+/* ── LESSONS ── */
+.les-list{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.les-card{background:#fff;border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s}
+.les-card:active{transform:scale(.98)}
+.ln{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,var(--red),var(--red2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;flex-shrink:0}
+.li{flex:1}
+.lt{font-size:16px;font-weight:600}
+.lc{font-size:12px;color:#888;margin-top:2px}
+.lg{background:rgba(255,179,0,.15);color:var(--dgold);border-radius:10px;padding:6px 12px;font-size:12px;font-weight:600;flex-shrink:0}
+
+/* ── STUDY MODE ── */
+#study{background:var(--bg)}
+.study-body{padding:14px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.study-progress{display:flex;align-items:center;justify-content:space-between;background:rgba(183,28,28,.08);border-radius:12px;padding:10px 16px}
+.sp-lbl{font-size:14px;font-weight:600;color:var(--red)}
+.sp-dots{display:flex;gap:5px}
+.dot{width:8px;height:8px;border-radius:50%;background:#e0e0e0;transition:background .3s}
+.dot.done{background:var(--lgreen)}
+.dot.cur{background:var(--red)}
+.word-card{background:#fff;border-radius:var(--r);padding:28px 20px;box-shadow:var(--shadow);text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:240px}
+.wc-num{font-size:13px;color:#aaa;font-weight:500}
+.wc-word{font-size:36px;font-weight:700;color:var(--red);line-height:1.3;word-break:break-word}
+.wc-meaning{font-size:16px;color:#555;line-height:1.5;text-align:center}
+.wc-en{font-size:13px;color:#999;font-style:italic}
+.wc-audio{display:flex;gap:14px;margin-top:6px}
+.wa-btn{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;border:none;background:none}
+.wa-c{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid rgba(183,28,28,.25);background:rgba(183,28,28,.07);transition:transform .1s}
+.wa-c:active{transform:scale(.88)}
+.wa-c.speaking{animation:pulse .6s ease-in-out infinite alternate}
+@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.12)}}
+.wa-l{font-size:11px;color:#777}
+.study-nav{display:flex;gap:10px;padding:0 0 10px}
+.btn-prev{flex:1;border:1.5px solid #ddd;background:#fff;border-radius:14px;padding:14px;font-size:15px;cursor:pointer;font-family:inherit;color:#555}
+.btn-next-s{flex:2;background:var(--red);color:#fff;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 3px 12px rgba(183,28,28,.3)}
+.btn-next-s.gold{background:var(--gold);color:#333}
+.study-mini{display:flex;flex-wrap:wrap;gap:8px;background:#fff;border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.mini-chip{padding:6px 12px;border-radius:20px;font-size:14px;background:#f5f5f5;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.mini-chip.active{background:rgba(183,28,28,.1);border-color:var(--red);color:var(--red);font-weight:600}
+.study-start-btn{background:linear-gradient(135deg,var(--lgreen),#2E7D32);color:#fff;border:none;border-radius:16px;padding:18px;font-size:18px;font-weight:700;width:100%;cursor:pointer;font-family:inherit;box-shadow:0 4px 18px rgba(27,94,32,.35);transition:transform .1s}
+.study-start-btn:active{transform:scale(.97)}
+
+/* ── DICTATION ── */
+#dictation{background:var(--bg)}
+.d-ab{display:flex;align-items:center;gap:10px;padding:50px 16px 14px;background:var(--red);color:#fff;flex-shrink:0}
+.d-ctr{font-size:14px;font-weight:700;margin-left:auto}
+.prog-bar{height:8px;background:rgba(255,255,255,.3);flex-shrink:0}
+.prog-fill{height:100%;background:var(--gold);transition:width .4s ease;border-radius:0 4px 4px 0}
+.d-body{padding:14px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.badge-row{display:flex;align-items:center;justify-content:space-between;background:rgba(183,28,28,.08);border-radius:12px;padding:10px 16px}
+.br-lbl{font-size:15px;font-weight:600;color:var(--red)}
+.br-sc{font-size:14px;color:#666}
+.audio-card{background:#fff;border-radius:var(--r);padding:22px;box-shadow:var(--shadow);text-align:center}
+.ac-title{font-size:16px;font-weight:600;color:var(--red);margin-bottom:16px}
+.ac-btns{display:flex;justify-content:space-evenly;align-items:flex-end;gap:8px}
+.ac-btn{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;border:none;background:none}
+.ac{border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .1s;border:2px solid}
+.ac:active{transform:scale(.88)}
+.ac.main{width:70px;height:70px;font-size:30px;border-color:rgba(183,28,28,.3);background:rgba(183,28,28,.08)}
+.ac.slow{width:56px;height:56px;font-size:24px;border-color:rgba(255,143,0,.3);background:rgba(255,143,0,.08)}
+.ac.lett{width:56px;height:56px;font-size:22px;border-color:rgba(27,94,32,.3);background:rgba(27,94,32,.08)}
+.ac.speaking{animation:pulse .6s ease-in-out infinite alternate}
+.ac-lbl{font-size:11px;color:#666}
+.rpt{margin-top:8px;font-size:12px;color:#aaa;min-height:16px}
+.inp{width:100%;border:2px solid #e0e0e0;border-radius:var(--r);padding:17px;font-size:22px;font-family:inherit;text-align:center;outline:none;background:#fff;box-shadow:var(--shadow);transition:border .2s}
+.inp:focus{border-color:var(--red)}
+.inp.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.act-row{display:flex;gap:10px}
+.btn-skip{flex:1;border:1.5px solid #ccc;background:#fff;border-radius:14px;padding:14px;font-size:15px;cursor:pointer;font-family:inherit}
+.btn-chk{flex:2;background:var(--red);color:#fff;border:none;border-radius:14px;padding:14px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 3px 12px rgba(183,28,28,.3)}
+.btn-chk:disabled{background:#ccc;box-shadow:none;cursor:not-allowed}
+.btn-nx{width:100%;background:var(--red);color:#fff;border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 3px 12px rgba(183,28,28,.3)}
+.btn-nx.gold{background:var(--gold);color:#333}
+.res-card{border-radius:var(--r);padding:18px;text-align:center}
+.res-card.ok{background:rgba(76,175,80,.08);border:2px solid rgba(76,175,80,.3)}
+.res-card.no{background:rgba(244,67,54,.08);border:2px solid rgba(244,67,54,.3)}
+.rc-emoji{font-size:40px;margin-bottom:6px}
+.rc-lbl{font-size:18px;font-weight:700;margin-bottom:10px}
+.rc-lbl.ok{color:var(--lgreen)}
+.rc-lbl.no{color:var(--wrong)}
+.ans-box{background:#fff;border-radius:12px;padding:12px}
+.ar{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #f0f0f0}
+.ar:last-child{border:none}
+.al{font-size:12px;color:#888}
+.av{font-size:18px;font-weight:700}
+.av.ok{color:var(--lgreen)}
+.av.no{color:var(--wrong);text-decoration:line-through}
+.mn{margin-top:8px;font-size:13px;color:#666;font-style:italic}
+.spd-card{background:#fff;border-radius:14px;padding:12px;box-shadow:var(--shadow)}
+.spd-lbl{font-size:12px;color:#888;text-align:center;margin-bottom:6px}
+input[type=range]{width:100%;accent-color:var(--red)}
+
+/* ── RESULT ── */
+#result{background:var(--bg)}
+.r-body{padding:18px;flex:1;overflow-y:auto}
+.sv-wrap{text-align:center;padding:14px 0}
+.svg-box{width:160px;height:160px;margin:0 auto;position:relative}
+.svg-box svg{transform:rotate(-90deg)}
+.stxt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sp{font-size:36px;font-weight:700}
+.sf{font-size:14px;color:#888}
+.gd-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 4px}
+.gb{font-size:22px;font-weight:700;color:var(--red)}
+.enc{text-align:center;color:#666;font-size:15px;margin-bottom:16px;line-height:1.5}
+.sg{display:flex;gap:10px;margin-bottom:16px}
+.sb{flex:1;background:#fff;border-radius:14px;padding:12px;text-align:center;box-shadow:var(--shadow)}
+.si{font-size:20px}
+.svl{font-size:18px;font-weight:700;margin:3px 0}
+.sbl{font-size:12px;color:#888}
+.rit{font-size:17px;font-weight:700;color:var(--red);margin-bottom:10px}
+.ri{background:#fff;border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ri.ok{border:1px solid rgba(76,175,80,.3)}
+.ri.no{border:1px solid rgba(244,67,54,.3)}
+.ric{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ric.c{background:rgba(76,175,80,.1)}
+.ric.w{background:rgba(244,67,54,.1)}
+.riw{flex:1;font-size:15px;font-weight:600}
+.ria{font-size:12px;color:var(--wrong);margin-top:2px}
+.rip{font-size:14px;font-weight:700}
+.rip.c{color:var(--lgreen)}
+.rip.w{color:var(--wrong)}
+.btn-home{width:100%;background:var(--red);color:#fff;border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 3px 12px rgba(183,28,28,.3);margin-top:10px}
+.btn-retry{width:100%;background:#fff;color:var(--red);border:2px solid var(--red);border-radius:14px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:8px}
+
+/* ── ADMIN ── */
+#admin{background:var(--bg)}
+.adm-body{padding:16px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+.adm-info{background:rgba(183,28,28,.07);border:1px solid rgba(183,28,28,.2);border-radius:14px;padding:14px 16px;font-size:13px;color:#444;line-height:1.7}
+.adm-info strong{color:var(--red);display:block;margin-bottom:4px;font-size:14px}
+.json-sample{background:#1e1e1e;color:#d4d4d4;border-radius:12px;padding:14px;font-family:monospace;font-size:11px;line-height:1.6;overflow-x:auto;white-space:pre}
+.ky{color:#9cdcfe}
+.ks{color:#ce9178}
+.kn{color:#b5cea8}
+.adm-tabs{display:flex;gap:8px}
+.tab-btn{flex:1;padding:12px;border-radius:12px;border:1.5px solid #ddd;background:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;color:#666}
+.tab-btn.active{background:var(--red);color:#fff;border-color:transparent}
+.tab-panel{display:none}
+.tab-panel.active{display:flex;flex-direction:column;gap:10px}
+.json-inp{width:100%;border:2px solid #ddd;border-radius:14px;padding:14px;font-family:monospace;font-size:13px;min-height:200px;outline:none;resize:vertical;transition:border .2s;background:#fafafa}
+.json-inp:focus{border-color:var(--red)}
+.url-inp{width:100%;border:2px solid #ddd;border-radius:14px;padding:14px;font-size:15px;font-family:inherit;outline:none;transition:border .2s;background:#fafafa}
+.url-inp:focus{border-color:var(--red)}
+.adm-msg{border-radius:12px;padding:12px 14px;font-size:14px;font-weight:500;text-align:center}
+.adm-msg.ok{background:rgba(76,175,80,.1);color:#2E7D32;border:1px solid rgba(76,175,80,.3)}
+.adm-msg.err{background:rgba(244,67,54,.1);color:#C62828;border:1px solid rgba(244,67,54,.3)}
+.loaded-list{display:flex;flex-direction:column;gap:8px}
+.ll-card{background:#fff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)}
+.ll-icon{font-size:24px}
+.ll-info{flex:1}
+.ll-name{font-size:14px;font-weight:600}
+.ll-cnt{font-size:12px;color:#888;margin-top:2px}
+.ll-del{background:rgba(244,67,54,.1);border:none;color:var(--wrong);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px}
+
+/* ── CONFETTI ── */
+.cf-wrap{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999}
+.cf{position:absolute;top:-10px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash" class="screen active">
+  <div class="sp-logo">த</div>
+  <div class="sp-title">தமிழ் எழுத்துப்பயிற்சி</div>
+  <div class="sp-sub">படி → கேள் → எழுது</div>
+  <div class="sp-spin"></div>
+</div>
+
+<!-- SETUP -->
+<div id="setup" class="screen">
+  <div class="su-hdr"><h1>வணக்கம்! 🙏</h1><p>உன்னைப் பற்றி சொல்</p></div>
+  <div class="su-body">
+    <div class="card"><h3>உன் படம் தேர்வு செய்</h3><div class="av-grid" id="avGrid"></div></div>
+    <div class="card"><h3>உன் பெயர்</h3><input class="ni" id="nameInp" placeholder="பெயரை உள்ளிடு..." autocomplete="off" type="text"></div>
+    <div class="card"><h3>வகுப்பு</h3><div class="gr-grid" id="grGrid"></div></div>
+    <button class="btn-red" onclick="startApp()" style="margin-bottom:20px">தொடங்கு! 🚀</button>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="screen">
+  <div class="h-hdr">
+    <div class="h-row">
+      <div class="av-disp" id="hAv">👦</div>
+      <div><div class="h-name" id="hName">மாணவர்</div><div class="h-grade" id="hGrade">வகுப்பு 1</div></div>
+      <button class="h-sw" onclick="showScreen('admin')" title="Admin">⚙️</button>
+      <button class="h-sw" onclick="switchStudent()">🔄</button>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="sc"><div class="si">🎯</div><div class="sv" id="stT">0</div><div class="sl">தேர்வுகள்</div></div>
+    <div class="sc"><div class="si">📊</div><div class="sv" id="stA">0%</div><div class="sl">சராசரி</div></div>
+    <div class="sc"><div class="si">🏆</div><div class="sv" id="stB">0%</div><div class="sl">சிறந்தது</div></div>
+  </div>
+  <div class="sec">வகுப்பு தேர்வு செய் 📚</div>
+  <div class="gr-home" id="grHome"></div>
+</div>
+
+<!-- LESSONS -->
+<div id="lessons" class="screen">
+  <div class="appbar"><button class="bk" onclick="showScreen('home')">←</button><span class="ab-title" id="lesTitle">பாடங்கள்</span></div>
+  <div class="les-list" id="lesList"></div>
+</div>
+
+<!-- STUDY MODE -->
+<div id="study" class="screen">
+  <div class="appbar">
+    <button class="bk" onclick="showScreen('lessons')">←</button>
+    <span class="ab-title" id="stTitle">படிக்கலாம்</span>
+    <span style="color:rgba(255,255,255,.8);font-size:13px" id="stCtr">1/10</span>
+  </div>
+  <div class="study-body">
+    <!-- word navigation dots -->
+    <div class="study-progress">
+      <span class="sp-lbl" id="stLbl">சொல் 1</span>
+      <div class="sp-dots" id="stDots"></div>
+    </div>
+    <!-- main word card -->
+    <div class="word-card" id="wordCard">
+      <div class="wc-num" id="wcNum">1 / 10</div>
+      <div class="wc-word" id="wcWord">—</div>
+      <div class="wc-meaning" id="wcMeaning"></div>
+      <div class="wc-en" id="wcEn"></div>
+      <div class="wc-audio">
+        <button class="wa-btn" onclick="stSpeak()"><div class="ac main" id="stAC">🔊</div><span class="wa-l">கேள்</span></button>
+        <button class="wa-btn" onclick="stSpeakSlow()"><div class="ac slow">🐢</div><span class="wa-l">மெதுவாக</span></button>
+      </div>
+    </div>
+    <!-- mini word list -->
+    <div class="card" id="miniList" style="padding:14px">
+      <div style="font-size:13px;color:var(--red);font-weight:600;margin-bottom:10px">அனைத்து சொற்களும்</div>
+      <div class="study-mini" id="miniChips" style="background:transparent;padding:0;box-shadow:none"></div>
+    </div>
+    <!-- nav buttons -->
+    <div class="study-nav" id="stNav">
+      <button class="btn-prev" id="stPrev" onclick="stPrevWord()">← முந்தைய</button>
+      <button class="btn-next-s" id="stNext" onclick="stNextWord()">அடுத்து →</button>
+    </div>
+    <!-- start test -->
+    <button class="study-start-btn" id="startTestBtn" onclick="startDictation()" style="display:none">
+      📝 Dictation Test தொடங்கு!
+    </button>
+  </div>
+</div>
+
+<!-- DICTATION -->
+<div id="dictation" class="screen">
+  <div class="d-ab">
+    <button class="bk" onclick="confirmBack()">←</button>
+    <span class="ab-title" id="dTitle">Dictation</span>
+    <span class="d-ctr" id="dCtr">1/10</span>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="pFill" style="width:0%"></div></div>
+  <div class="d-body">
+    <div class="badge-row">
+      <span class="br-lbl" id="brLbl">சொல் 1</span>
+      <span class="br-sc" id="brSc">✅ 0  ❌ 0</span>
+    </div>
+    <div class="audio-card">
+      <div class="ac-title">கேட்டு எழுது ✏️</div>
+      <div class="ac-btns">
+        <button class="ac-btn" onclick="playWord()"><div class="ac main" id="mAC">🔊</div><span class="ac-lbl">கேள்</span></button>
+        <button class="ac-btn" onclick="playWordSlow()"><div class="ac slow">🐢</div><span class="ac-lbl">மெதுவாக</span></button>
+        <button class="ac-btn" onclick="playLetterByLetter()"><div class="ac lett">🔤</div><span class="ac-lbl">எழுத்து எழுத்தாக</span></button>
+      </div>
+      <div class="rpt" id="rptInfo"></div>
+    </div>
+    <input class="inp" id="ansInp" placeholder="இங்கே எழுது..." oninput="onIC()" onkeydown="onKD(event)" autocomplete="off" autocorrect="off" spellcheck="false" type="text">
+    <div id="actBtns">
+      <div class="act-row">
+        <button class="btn-skip" onclick="skipWord()">தவிர் ⏭️</button>
+        <button class="btn-chk" id="chkBtn" onclick="checkAns()" disabled>சரிபார் ✔️</button>
+      </div>
+    </div>
+    <div id="resCard" style="display:none"></div>
+    <div class="spd-card">
+      <div class="spd-lbl">பேச்சு வேகம்: <span id="spdL">சாதாரணம்</span></div>
+      <input type="range" min="0.1" max="0.9" step="0.1" value="0.5" id="spdR" oninput="updSpd(this.value)">
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="screen">
+  <div class="appbar"><span class="ab-title">முடிவுகள் 🏆</span></div>
+  <div class="r-body">
+    <div class="sv-wrap">
+      <div class="svg-box">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="68" fill="none" stroke="#e0e0e0" stroke-width="12"/>
+          <circle cx="80" cy="80" r="68" fill="none" id="sArc" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" stroke-dasharray="427" stroke-dashoffset="427"/>
+        </svg>
+        <div class="stxt"><div class="sp" id="rPct">0%</div><div class="sf" id="rFrac">0/0</div></div>
+      </div>
+    </div>
+    <div class="gd-row"><span id="gEm">📝</span><span class="gb" id="gBdg">தரம்: B</span></div>
+    <div class="enc" id="encT"></div>
+    <div class="sg">
+      <div class="sb"><div class="si">✅</div><div class="svl" id="rOk" style="color:var(--lgreen)">0</div><div class="sbl">சரி</div></div>
+      <div class="sb"><div class="si">❌</div><div class="svl" id="rNo" style="color:var(--wrong)">0</div><div class="sbl">தவறு</div></div>
+      <div class="sb"><div class="si">⏱️</div><div class="svl" id="rTm" style="color:steelblue">0s</div><div class="sbl">நேரம்</div></div>
+    </div>
+    <div class="rit">விரிவான முடிவுகள்</div>
+    <div id="riList"></div>
+    <button class="btn-retry" onclick="retryLesson()">மீண்டும் முயற்சி 🔄</button>
+    <button class="btn-home" onclick="goHome()">முகப்புக்கு செல் 🏠</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin" class="screen">
+  <div class="appbar"><button class="bk" onclick="showScreen('home')">←</button><span class="ab-title">Admin — சொற்கள் சேர்</span></div>
+  <div class="adm-body">
+    <div class="adm-info">
+      <strong>📋 JSON Format எப்படி இருக்க வேண்டும்?</strong>
+      வகுப்பு வாரியாக சொற்களை JSON-ல் கொடுங்கள். கீழே உள்ள format-ஐ பயன்படுத்துங்கள்:
+    </div>
+    <div class="json-sample"><span class="ky">"grade"</span>: <span class="kn">3</span>,
+<span class="ky">"tamilName"</span>: <span class="ks">"மூன்றாம் வகுப்பு"</span>,
+<span class="ky">"icon"</span>: <span class="ks">"🌳"</span>,
+<span class="ky">"lessons"</span>: [{
+  <span class="ky">"lessonNumber"</span>: <span class="kn">1</span>,
+  <span class="ky">"title"</span>: <span class="ks">"விலங்குகள்"</span>,
+  <span class="ky">"words"</span>: [
+    { <span class="ky">"word"</span>: <span class="ks">"யானை"</span>, <span class="ky">"meaning"</span>: <span class="ks">"பெரிய விலங்கு"</span> },
+    { <span class="ky">"word"</span>: <span class="ks">"சிங்கம்"</span>, <span class="ky">"meaning"</span>: <span class="ks">"காட்டின் அரசன்"</span> }
+  ]
+}]</div>
+
+    <div class="adm-tabs">
+      <button class="tab-btn active" onclick="switchTab('paste')">📋 JSON Paste</button>
+      <button class="tab-btn" onclick="switchTab('url')">🔗 URL Load</button>
+    </div>
+
+    <!-- PASTE TAB -->
+    <div class="tab-panel active" id="tab-paste">
+      <textarea class="json-inp" id="jsonInp" placeholder="இங்கே JSON paste செய்யுங்கள்..."></textarea>
+      <button class="btn-red" onclick="loadFromPaste()">✅ சேர்க்கு / Update செய்</button>
+    </div>
+
+    <!-- URL TAB -->
+    <div class="tab-panel" id="tab-url">
+      <input class="url-inp" id="urlInp" placeholder="JSON file URL (GitHub raw link போட்டு)" type="url">
+      <div style="font-size:12px;color:#888;padding:2px 4px">
+        GitHub → your file → Raw button → அந்த URL-ஐ copy செய்யுங்கள்
+      </div>
+      <button class="btn-red" onclick="loadFromUrl()">📥 Load செய்</button>
+    </div>
+
+    <div id="admMsg" style="display:none"></div>
+
+    <!-- LOADED GRADES -->
+    <div id="loadedSection" style="display:none">
+      <div style="font-size:15px;font-weight:700;color:var(--red);margin-bottom:10px">✅ Load ஆன வகுப்புகள்</div>
+      <div class="loaded-list" id="loadedList"></div>
+    </div>
+
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<div class="cf-wrap" id="cfWrap"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+// DATA — Built-in grades (fallback)
+// ═══════════════════════════════════════════════
+const BUILTIN_GRADES = [
+  {
+    grade: 1,
+    tamilName: "ஒன்றாம் வகுப்பு",
+    icon: "🌱",
+    lessons: [
+      {
+        num: 1,
+        title: "உயிர் எழுத்துகள்",
+        words: [
+          {w:"அம்மா",m:"தாய்",e:"Mother"},
+          {w:"அப்பா",m:"தந்தை",e:"Father"},
+          {w:"ஆடு",m:"வீட்டு விலங்கு",e:"Goat"},
+          {w:"இலை",m:"மரத்தின் பகுதி",e:"Leaf"},
+          {w:"ஈ",m:"சிறு பூச்சி",e:"Fly"},
+          {w:"உடை",m:"ஆடை",e:"Dress"},
+          {w:"ஊசி",m:"தையல் கருவி",e:"Needle"},
+          {w:"எலி",m:"சிறு விலங்கு",e:"Rat"},
+          {w:"ஏணி",m:"ஏற பயன்படும் கருவி",e:"Ladder"},
+          {w:"ஐந்து",m:"5 என்ற எண்",e:"Five"},
+        ]
+      },
+      {
+        num: 2,
+        title: "எளிய சொற்கள்",
+        words: [
+          {w:"பூ",m:"மலர்",e:"Flower"},
+          {w:"மரம்",m:"தாவரம்",e:"Tree"},
+          {w:"தண்ணீர்",m:"நீர்",e:"Water"},
+          {w:"பால்",m:"வெண்மையான திரவம்",e:"Milk"},
+          {w:"சோறு",m:"சமைத்த அரிசி",e:"Rice"},
+          {w:"வீடு",m:"இல்லம்",e:"House"},
+          {w:"நாய்",m:"வீட்டு விலங்கு",e:"Dog"},
+          {w:"பூனை",m:"வீட்டு விலங்கு",e:"Cat"},
+          {w:"மீன்",m:"நீர் வாழ் உயிர்",e:"Fish"},
+          {w:"பறவை",m:"வானில் பறக்கும் உயிர்",e:"Bird"},
+        ]
+      },
+      {
+        num: 3,
+        title: "உடல் உறுப்புகள்",
+        words: [
+          {w:"கண்",m:"பார்க்கும் உறுப்பு",e:"Eye"},
+          {w:"காது",m:"கேட்கும் உறுப்பு",e:"Ear"},
+          {w:"மூக்கு",m:"மணம் உணரும் உறுப்பு",e:"Nose"},
+          {w:"வாய்",m:"பேசும் உறுப்பு",e:"Mouth"},
+          {w:"கை",m:"பிடிக்கும் உறுப்பு",e:"Hand"},
+          {w:"கால்",m:"நடக்கும் உறுப்பு",e:"Leg"},
+          {w:"தலை",m:"உடலின் மேல் பகுதி",e:"Head"},
+          {w:"பல்",m:"மெல்லும் உறுப்பு",e:"Tooth"},
+          {w:"நாக்கு",m:"சுவை உணரும் உறுப்பு",e:"Tongue"},
+          {w:"விரல்",m:"கை மற்றும் கால் நுனி",e:"Finger"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 2,
+    tamilName: "இரண்டாம் வகுப்பு",
+    icon: "🌿",
+    lessons: [
+      {
+        num: 1,
+        title: "குடும்பம்",
+        words: [
+          {w:"தாத்தா",m:"அப்பாவின் அல்லது அம்மாவின் தந்தை",e:"Grandfather"},
+          {w:"பாட்டி",m:"அப்பாவின் அல்லது அம்மாவின் தாய்",e:"Grandmother"},
+          {w:"அண்ணன்",m:"மூத்த சகோதரன்",e:"Elder brother"},
+          {w:"அக்கா",m:"மூத்த சகோதரி",e:"Elder sister"},
+          {w:"தம்பி",m:"இளைய சகோதரன்",e:"Younger brother"},
+          {w:"தங்கை",m:"இளைய சகோதரி",e:"Younger sister"},
+          {w:"மாமா",m:"தாயின் சகோதரன்",e:"Uncle"},
+          {w:"அத்தை",m:"தந்தையின் சகோதரி",e:"Aunt"},
+          {w:"குழந்தை",m:"சிறு வயதினர்",e:"Child"},
+          {w:"குடும்பம்",m:"ஒரே வீட்டில் வாழும் உறவினர்",e:"Family"},
+        ]
+      },
+      {
+        num: 2,
+        title: "பழங்கள்",
+        words: [
+          {w:"மாம்பழம்",m:"மாமரத்தின் பழம்",e:"Mango"},
+          {w:"வாழைப்பழம்",m:"வாழை மரத்தின் பழம்",e:"Banana"},
+          {w:"ஆப்பிள்",m:"சிவப்பு நிற பழம்",e:"Apple"},
+          {w:"திராட்சை",m:"கொத்தாக வரும் பழம்",e:"Grapes"},
+          {w:"ஆரஞ்சு",m:"சாற்று பழம்",e:"Orange"},
+          {w:"மாதுளை",m:"சிவப்பு விதைகள் கொண்ட பழம்",e:"Pomegranate"},
+          {w:"பலாப்பழம்",m:"பெரிய முட்கள் கொண்ட பழம்",e:"Jackfruit"},
+          {w:"கொய்யா",m:"வெள்ளை சதை கொண்ட பழம்",e:"Guava"},
+          {w:"பப்பாளி",m:"மஞ்சள் நிற பழம்",e:"Papaya"},
+          {w:"தர்பூசணி",m:"பெரிய நீர்ச்சத்து பழம்",e:"Watermelon"},
+        ]
+      },
+      {
+        num: 3,
+        title: "நிறங்கள்",
+        words: [
+          {w:"சிவப்பு",m:"தீ போன்ற நிறம்",e:"Red"},
+          {w:"நீலம்",m:"வான் போன்ற நிறம்",e:"Blue"},
+          {w:"பச்சை",m:"மரத்தின் நிறம்",e:"Green"},
+          {w:"மஞ்சள்",m:"சூரியன் போன்ற நிறம்",e:"Yellow"},
+          {w:"வெள்ளை",m:"பால் போன்ற நிறம்",e:"White"},
+          {w:"கருப்பு",m:"இரவு போன்ற நிறம்",e:"Black"},
+          {w:"ஊதா",m:"கலப்பு நிறம்",e:"Purple"},
+          {w:"இளஞ்சிவப்பு",m:"மென்மையான சிவப்பு",e:"Pink"},
+          {w:"பழுப்பு",m:"மண் நிறம்",e:"Brown"},
+          {w:"வானவில்",m:"ஏழு நிறங்கள் கொண்ட வில்",e:"Rainbow"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 3,
+    tamilName: "மூன்றாம் வகுப்பு",
+    icon: "🌳",
+    lessons: [
+      {
+        num: 1,
+        title: "விலங்குகள்",
+        words: [
+          {w:"யானை",m:"மிகப் பெரிய தாவர உண்ணி விலங்கு",e:"Elephant"},
+          {w:"சிங்கம்",m:"காட்டின் அரசன்",e:"Lion"},
+          {w:"புலி",m:"கோடுகள் கொண்ட விலங்கு",e:"Tiger"},
+          {w:"குரங்கு",m:"மரத்தில் வாழும் விலங்கு",e:"Monkey"},
+          {w:"முயல்",m:"நீண்ட காதுகள் கொண்ட விலங்கு",e:"Rabbit"},
+          {w:"ஆமை",m:"மெதுவாக நடக்கும் விலங்கு",e:"Tortoise"},
+          {w:"மான்",m:"வேகமாக ஓடும் விலங்கு",e:"Deer"},
+          {w:"கரடி",m:"கனமான உடல் கொண்ட விலங்கு",e:"Bear"},
+          {w:"நரி",m:"தந்திரமான விலங்கு",e:"Fox"},
+          {w:"ஒட்டகம்",m:"பாலை வெளியில் வாழும் விலங்கு",e:"Camel"},
+        ]
+      },
+      {
+        num: 2,
+        title: "எளிய வாக்கியங்கள்",
+        words: [
+          {w:"நான் படிக்கிறேன்",m:"தன்னைப் பற்றிய படிப்பு வாக்கியம்",e:"I am studying"},
+          {w:"அவள் பாடுகிறாள்",m:"ஒரு பெண் பற்றிய வாக்கியம்",e:"She is singing"},
+          {w:"மழை பெய்கிறது",m:"இயற்கை நிகழ்வு வாக்கியம்",e:"It is raining"},
+          {w:"பூ மலர்கிறது",m:"தாவர வாக்கியம்",e:"Flower is blooming"},
+          {w:"குழந்தை சிரிக்கிறது",m:"குழந்தை பற்றிய வாக்கியம்",e:"Baby is laughing"},
+          {w:"பறவை பறக்கிறது",m:"பறவை பற்றிய வாக்கியம்",e:"Bird is flying"},
+          {w:"சூரியன் உதிக்கிறது",m:"காலை வாக்கியம்",e:"Sun is rising"},
+          {w:"நிலா ஒளிர்கிறது",m:"இரவு வாக்கியம்",e:"Moon is shining"},
+          {w:"மீன் நீந்துகிறது",m:"நீர் வாழ் உயிர் வாக்கியம்",e:"Fish is swimming"},
+          {w:"காற்று வீசுகிறது",m:"இயற்கை வாக்கியம்",e:"Wind is blowing"},
+        ]
+      },
+      {
+        num: 3,
+        title: "காய்கறிகள்",
+        words: [
+          {w:"தக்காளி",m:"சிவப்பு நிற காய்கறி",e:"Tomato"},
+          {w:"வெங்காயம்",m:"கண்ணீர் வரவழைக்கும் காய்",e:"Onion"},
+          {w:"கத்திரிக்காய்",m:"கருப்பு நிற நீள் காய்",e:"Brinjal"},
+          {w:"பீர்க்கங்காய்",m:"பச்சை நிற நீண்ட காய்",e:"Ridge gourd"},
+          {w:"சுரைக்காய்",m:"வெண்மை நிற காய்",e:"Bottle gourd"},
+          {w:"முள்ளங்கி",m:"வேர் காய்கறி",e:"Radish"},
+          {w:"கேரட்",m:"ஆரஞ்சு நிற வேர் காய்",e:"Carrot"},
+          {w:"பட்டாணி",m:"பச்சை விதைகள்",e:"Peas"},
+          {w:"உருளைக்கிழங்கு",m:"மண்ணில் விளையும் காய்",e:"Potato"},
+          {w:"பாவக்காய்",m:"கசப்பான காய்கறி",e:"Bitter gourd"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 4,
+    tamilName: "நான்காம் வகுப்பு",
+    icon: "📖",
+    lessons: [
+      {
+        num: 1,
+        title: "தொழில்கள்",
+        words: [
+          {w:"ஆசிரியர்",m:"கல்வி கற்பிப்பவர்",e:"Teacher"},
+          {w:"மருத்துவர்",m:"நோய் குணப்படுத்துபவர்",e:"Doctor"},
+          {w:"பொறியாளர்",m:"இயந்திரங்கள் வடிவமைப்பவர்",e:"Engineer"},
+          {w:"விவசாயி",m:"நிலத்தில் பயிர் செய்பவர்",e:"Farmer"},
+          {w:"காவலர்",m:"சட்டம் காப்பவர்",e:"Police"},
+          {w:"தீயணைப்பாளர்",m:"தீ அணைப்பவர்",e:"Firefighter"},
+          {w:"வழக்கறிஞர்",m:"சட்டம் படித்தவர்",e:"Lawyer"},
+          {w:"விமானி",m:"விமானம் ஓட்டுபவர்",e:"Pilot"},
+          {w:"செவிலியர்",m:"மருத்துவமனையில் பணிசெய்பவர்",e:"Nurse"},
+          {w:"அஞ்சல்காரர்",m:"கடிதம் கொண்டு செல்பவர்",e:"Postman"},
+        ]
+      },
+      {
+        num: 2,
+        title: "இயற்கை",
+        words: [
+          {w:"சூரியன்",m:"ஒளி மற்றும் வெப்பம் தரும் விண்மீன்",e:"Sun"},
+          {w:"சந்திரன்",m:"இரவில் ஒளிரும் கோள்",e:"Moon"},
+          {w:"நட்சத்திரம்",m:"வானில் ஒளிரும் கோளங்கள்",e:"Star"},
+          {w:"மலை",m:"உயரமான நிலப்பகுதி",e:"Mountain"},
+          {w:"கடல்",m:"உப்பு நீர் நிரம்பிய பெரும் நீர்நிலை",e:"Sea"},
+          {w:"ஆறு",m:"மலையிலிருந்து வரும் நீர்",e:"River"},
+          {w:"வானம்",m:"மேலே நீலமாக தெரியும் வெளி",e:"Sky"},
+          {w:"மேகம்",m:"மழை தரும் நீர்த்துளிகள்",e:"Cloud"},
+          {w:"இடி",m:"மேகங்கள் உண்டாக்கும் ஒலி",e:"Thunder"},
+          {w:"மின்னல்",m:"வானில் தோன்றும் ஒளி",e:"Lightning"},
+        ]
+      },
+      {
+        num: 3,
+        title: "வீட்டு பொருட்கள்",
+        words: [
+          {w:"நாற்காலி",m:"அமர்வதற்கான கருவி",e:"Chair"},
+          {w:"மேசை",m:"வேலை செய்யும் தட்டு",e:"Table"},
+          {w:"கட்டில்",m:"தூங்குவதற்கான இடம்",e:"Bed"},
+          {w:"கண்ணாடி",m:"பார்க்கும் தட்டு",e:"Mirror"},
+          {w:"விசிறி",m:"காற்று உண்டாக்கும் கருவி",e:"Fan"},
+          {w:"விளக்கு",m:"ஒளி தரும் கருவி",e:"Lamp"},
+          {w:"தொலைக்காட்சி",m:"படங்கள் காட்டும் பெட்டி",e:"Television"},
+          {w:"குளிர்பதனப்பெட்டி",m:"உணவு குளிர வைக்கும் கருவி",e:"Refrigerator"},
+          {w:"அடுப்பு",m:"சமையல் செய்யும் கருவி",e:"Stove"},
+          {w:"தொலைபேசி",m:"தொலைவில் பேசும் கருவி",e:"Telephone"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 5,
+    tamilName: "ஐந்தாம் வகுப்பு",
+    icon: "📗",
+    lessons: [
+      {
+        num: 1,
+        title: "நாடும் நகரமும்",
+        words: [
+          {w:"தலைநகரம்",m:"நாட்டின் முதன்மை நகரம்",e:"Capital city"},
+          {w:"தமிழ்நாடு",m:"தமிழர்களின் மாநிலம்",e:"Tamil Nadu"},
+          {w:"சென்னை",m:"தமிழ்நாட்டின் தலைநகரம்",e:"Chennai"},
+          {w:"மதுரை",m:"கோயில்களின் நகரம்",e:"Madurai"},
+          {w:"திருச்சிராப்பள்ளி",m:"காவிரி கரை நகரம்",e:"Trichy"},
+          {w:"கோயம்புத்தூர்",m:"தமிழ்நாட்டின் வணிக நகரம்",e:"Coimbatore"},
+          {w:"குமரி",m:"இந்தியாவின் தென் கோடி",e:"Kanyakumari"},
+          {w:"பாரதம்",m:"நம் தேசம்",e:"India"},
+          {w:"குடியரசு",m:"மக்களால் நடத்தப்படும் அரசு",e:"Republic"},
+          {w:"ஜனநாயகம்",m:"மக்கள் ஆட்சி முறை",e:"Democracy"},
+        ]
+      },
+      {
+        num: 2,
+        title: "பண்டிகைகள்",
+        words: [
+          {w:"பொங்கல்",m:"தமிழரின் அறுவடை திருவிழா",e:"Pongal"},
+          {w:"தீபாவளி",m:"விளக்குகளின் திருவிழா",e:"Diwali"},
+          {w:"கிறிஸ்துமஸ்",m:"கிறிஸ்தவர்களின் திருவிழா",e:"Christmas"},
+          {w:"ரம்ஜான்",m:"முஸ்லிம்களின் திருவிழா",e:"Ramzan"},
+          {w:"நவராத்திரி",m:"ஒன்பது இரவுகள் திருவிழா",e:"Navaratri"},
+          {w:"விநாயகர் சதுர்த்தி",m:"விநாயகர் பிறந்த நாள் திருவிழா",e:"Ganesh Chaturthi"},
+          {w:"குடியரசு தினம்",m:"அரசியலமைப்பு நினைவு நாள்",e:"Republic Day"},
+          {w:"சுதந்திர தினம்",m:"விடுதலை நினைவு நாள்",e:"Independence Day"},
+          {w:"ஆசிரியர் தினம்",m:"ஆசிரியர்களுக்கான நாள்",e:"Teachers Day"},
+          {w:"குழந்தைகள் தினம்",m:"குழந்தைகளுக்கான நாள்",e:"Childrens Day"},
+        ]
+      },
+      {
+        num: 3,
+        title: "போக்குவரத்து",
+        words: [
+          {w:"தொடர்வண்டி",m:"தண்டவாளத்தில் ஓடும் வாகனம்",e:"Train"},
+          {w:"விமானம்",m:"வானில் பறக்கும் வாகனம்",e:"Aeroplane"},
+          {w:"கப்பல்",m:"கடலில் செல்லும் வாகனம்",e:"Ship"},
+          {w:"பேருந்து",m:"பலர் பயணிக்கும் வாகனம்",e:"Bus"},
+          {w:"மோட்டார் சைக்கிள்",m:"இரு சக்கர வாகனம்",e:"Motorcycle"},
+          {w:"சைக்கிள்",m:"மிதிக்கும் இரு சக்கர வாகனம்",e:"Bicycle"},
+          {w:"கார்",m:"நான்கு சக்கர வாகனம்",e:"Car"},
+          {w:"ஆட்டோ",m:"மூன்று சக்கர வாகனம்",e:"Auto rickshaw"},
+          {w:"படகு",m:"ஆற்றில் செல்லும் வாகனம்",e:"Boat"},
+          {w:"ஹெலிகாப்டர்",m:"இடத்திலேயே மேலே பறக்கும் வாகனம்",e:"Helicopter"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 6,
+    tamilName: "ஆறாம் வகுப்பு",
+    icon: "📘",
+    lessons: [
+      {
+        num: 1,
+        title: "அறிவியல் சொற்கள்",
+        words: [
+          {w:"பூமி",m:"நாம் வாழும் கோள்",e:"Earth"},
+          {w:"ஈர்ப்பு விசை",m:"பொருட்களை கீழே இழுக்கும் சக்தி",e:"Gravity"},
+          {w:"ஒளிச்சேர்க்கை",m:"தாவரங்கள் உணவு தயாரிக்கும் முறை",e:"Photosynthesis"},
+          {w:"காந்தம்",m:"இரும்பை ஈர்க்கும் பொருள்",e:"Magnet"},
+          {w:"ஆற்றல்",m:"வேலை செய்யும் திறன்",e:"Energy"},
+          {w:"மின்சாரம்",m:"மின்னணுக்களின் ஓட்டம்",e:"Electricity"},
+          {w:"வெப்பநிலை",m:"வெப்பத்தின் அளவு",e:"Temperature"},
+          {w:"திசைவேகம்",m:"ஒரு திசையில் செல்லும் வேகம்",e:"Velocity"},
+          {w:"நுண்ணுயிர்",m:"கண்ணுக்கு தெரியாத உயிரினம்",e:"Microorganism"},
+          {w:"சுற்றுச்சூழல்",m:"நம்மைச் சுற்றியுள்ள இயற்கை",e:"Environment"},
+        ]
+      },
+      {
+        num: 2,
+        title: "வாக்கியப் பயிற்சி",
+        words: [
+          {w:"தமிழ் மிகப் பழமையான மொழி",m:"தமிழ் மொழியின் சிறப்பு வாக்கியம்",e:"Tamil is a very ancient language"},
+          {w:"கல்வியே அறிவின் கண்",m:"கல்வியின் முக்கியத்துவம்",e:"Education is the eye of knowledge"},
+          {w:"நேரத்தின் அருமை உணர்",m:"நேர மேலாண்மை பற்றிய வாக்கியம்",e:"Understand the value of time"},
+          {w:"அறிவை வளர்க்கும் கல்வி",m:"கல்வியின் பயன் பற்றிய வாக்கியம்",e:"Education grows knowledge"},
+          {w:"உழைப்பே உயர்வின் அடிப்படை",m:"உழைப்பின் சிறப்பு பற்றிய வாக்கியம்",e:"Hard work is the foundation of success"},
+          {w:"நல்லதை நினைப்போம்",m:"நேர்மறை சிந்தனை வாக்கியம்",e:"Lets think good"},
+          {w:"இயற்கையைக் காப்போம்",m:"சுற்றுச்சூழல் பாதுகாப்பு வாக்கியம்",e:"Lets protect nature"},
+          {w:"மரம் நடுவோம் வளம் பெறுவோம்",m:"மரம் நடுதலின் பயன்",e:"Plant trees prosper"},
+          {w:"பெற்றோரை மதிப்போம்",m:"பெற்றோர் மரியாதை வாக்கியம்",e:"Respect parents"},
+          {w:"நாட்டை நேசிப்போம்",m:"தேசப்பற்று வாக்கியம்",e:"Love our nation"},
+        ]
+      },
+      {
+        num: 3,
+        title: "கணிதச் சொற்கள்",
+        words: [
+          {w:"கூட்டல்",m:"எண்களை சேர்க்கும் செயல்",e:"Addition"},
+          {w:"கழித்தல்",m:"எண்களை குறைக்கும் செயல்",e:"Subtraction"},
+          {w:"பெருக்கல்",m:"எண்களை மடங்காக்கும் செயல்",e:"Multiplication"},
+          {w:"வகுத்தல்",m:"எண்களை சம பங்காக்கும் செயல்",e:"Division"},
+          {w:"பின்னம்",m:"முழுமையற்ற எண்",e:"Fraction"},
+          {w:"தசமம்",m:"புள்ளியுடன் கூடிய எண்",e:"Decimal"},
+          {w:"சதவீதம்",m:"நூறில் ஒரு பகுதி",e:"Percentage"},
+          {w:"கோணம்",m:"இரு கோடுகளுக்கு இடையே உள்ள அளவு",e:"Angle"},
+          {w:"பரப்பளவு",m:"ஒரு தளத்தின் அளவு",e:"Area"},
+          {w:"சுற்றளவு",m:"ஒரு வடிவத்தின் வெளிப்பரப்பு",e:"Perimeter"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 7,
+    tamilName: "ஏழாம் வகுப்பு",
+    icon: "📙",
+    lessons: [
+      {
+        num: 1,
+        title: "இலக்கணச் சொற்கள்",
+        words: [
+          {w:"வல்லினம்",m:"க ச ட த ப ற ஆகிய எழுத்துகள்",e:"Hard consonants"},
+          {w:"மெல்லினம்",m:"ங ஞ ண ந ம ன ஆகிய எழுத்துகள்",e:"Soft consonants"},
+          {w:"இடையினம்",m:"ய ர ல வ ழ ள ஆகிய எழுத்துகள்",e:"Medium consonants"},
+          {w:"குற்றியலுகரம்",m:"உகரம் குறுகி ஒலிக்கும் முறை",e:"Short u ending"},
+          {w:"அகரமுதலி",m:"சொற்களை அகர வரிசையில் தொகுத்த நூல்",e:"Dictionary"},
+          {w:"வேற்றுமை",m:"பெயர்ச்சொல்லின் தொடர்பு காட்டும் விகுதி",e:"Case suffix"},
+          {w:"திணை",m:"உயர்திணை மற்றும் அஃறிணை என இரு வகை",e:"Category"},
+          {w:"பால்",m:"ஆண்பால் பெண்பால் என வகை",e:"Gender"},
+          {w:"எண்",m:"ஒருமை பன்மை என வகை",e:"Number"},
+          {w:"இடம்",m:"தன்மை முன்னிலை படர்க்கை என வகை",e:"Person"},
+        ]
+      },
+      {
+        num: 2,
+        title: "தமிழ் இலக்கியம்",
+        words: [
+          {w:"திருக்குறள்",m:"திருவள்ளுவர் எழுதிய நூல்",e:"Thirukkural"},
+          {w:"சங்க இலக்கியம்",m:"சங்க காலத்தில் எழுதப்பட்ட நூல்கள்",e:"Sangam literature"},
+          {w:"அகப்பொருள்",m:"காதல் உணர்வை பற்றிய பொருள்",e:"Inner meaning"},
+          {w:"புறப்பொருள்",m:"வீரம் போரை பற்றிய பொருள்",e:"Outer meaning"},
+          {w:"கவிதை",m:"ஒழுங்கான சொல் அமைப்பு",e:"Poetry"},
+          {w:"செய்யுள்",m:"இலக்கண விதிப்படி அமைந்த பாடல்",e:"Verse"},
+          {w:"உரைநடை",m:"நேரடியான சொல் அமைப்பு",e:"Prose"},
+          {w:"நாடகம்",m:"மேடையில் நடிக்கும் கலை",e:"Drama"},
+          {w:"சிறுகதை",m:"சிறிய கதை வடிவம்",e:"Short story"},
+          {w:"புதினம்",m:"நீண்ட கதை வடிவம்",e:"Novel"},
+        ]
+      },
+      {
+        num: 3,
+        title: "சமூக அறிவியல்",
+        words: [
+          {w:"புவியியல்",m:"பூமியை பற்றி படிக்கும் துறை",e:"Geography"},
+          {w:"வரலாறு",m:"கடந்த காலத்தை படிக்கும் துறை",e:"History"},
+          {w:"குடிமையியல்",m:"குடிமக்களின் உரிமை கடமை பற்றிய துறை",e:"Civics"},
+          {w:"பொருளாதாரம்",m:"பணம் வர்த்தகம் பற்றிய துறை",e:"Economics"},
+          {w:"கலாச்சாரம்",m:"ஒரு சமூகத்தின் பழக்கவழக்கங்கள்",e:"Culture"},
+          {w:"நாகரிகம்",m:"வளர்ந்த சமூக நிலை",e:"Civilization"},
+          {w:"மக்கள்தொகை",m:"ஒரு இடத்தில் வாழும் மக்களின் எண்ணிக்கை",e:"Population"},
+          {w:"இடம்பெயர்வு",m:"ஒரு இடத்திலிருந்து மற்றொரு இடம் செல்வது",e:"Migration"},
+          {w:"வேளாண்மை",m:"விவசாயம் செய்யும் தொழில்",e:"Agriculture"},
+          {w:"தொழில்துறை",m:"பொருட்கள் தயாரிக்கும் துறை",e:"Industry"},
+        ]
+      },
+    ]
+  },
+  {
+    grade: 8,
+    tamilName: "எட்டாம் வகுப்பு",
+    icon: "📕",
+    lessons: [
+      {
+        num: 1,
+        title: "கடினமான சொற்கள்",
+        words: [
+          {w:"சுயசரிதை",m:"தன் வாழ்க்கையை தானே எழுதுவது",e:"Autobiography"},
+          {w:"ஒப்புக்கொள்ளுதல்",m:"ஒரு கருத்தை ஏற்றுக்கொள்வது",e:"Agreement"},
+          {w:"பொறுப்பேற்றல்",m:"ஒரு கடமையை ஏற்றுக்கொள்வது",e:"Taking responsibility"},
+          {w:"சுற்றுப்புறம்",m:"ஒரு இடத்தைச் சுற்றியுள்ள பகுதி",e:"Surroundings"},
+          {w:"தொலைக்காட்சி",m:"தொலைவில் உள்ளதை காட்டும் கருவி",e:"Television"},
+          {w:"கணினி",m:"தகவல் செயலாக்க இயந்திரம்",e:"Computer"},
+          {w:"விண்வெளி",m:"பூமிக்கு வெளியே உள்ள வெளி",e:"Space"},
+          {w:"புவியியல்",m:"பூமியின் அமைப்பை படிக்கும் துறை",e:"Geography"},
+          {w:"பொருளாதாரம்",m:"உற்பத்தி விநியோகம் நுகர்வு பற்றிய துறை",e:"Economy"},
+          {w:"அரசியலமைப்பு",m:"நாட்டின் அடிப்படை சட்டங்கள்",e:"Constitution"},
+        ]
+      },
+      {
+        num: 2,
+        title: "பழமொழிகள்",
+        words: [
+          {w:"ஆலும் வேலும் பல்லுக்குறுதி",m:"ஆல் மற்றும் வேல் மரங்கள் பல்லை உறுதிப்படுத்தும்",e:"Banyan and Neem strengthen teeth"},
+          {w:"கற்றது கைமண் அளவு",m:"நாம் கற்றது மிகவும் சிறியது",e:"What we learned is a handful"},
+          {w:"அறிவே ஆற்றல்",m:"அறிவே மிகப்பெரிய சக்தி",e:"Knowledge is power"},
+          {w:"உழைப்பே உயர்வு",m:"உழைப்பால் மட்டுமே உயரலாம்",e:"Work is worship"},
+          {w:"ஒழுக்கமே உயர்வு தரும்",m:"ஒழுக்கம் மனிதனை உயர வைக்கும்",e:"Discipline brings elevation"},
+          {w:"கல்லாதவரே கண்ணில்லாதவர்",m:"படிக்காதவர் பார்வையற்றவர் போன்றவர்",e:"Uneducated are blind"},
+          {w:"பொறுமையே பொன்னாகும்",m:"பொறுமை மிக விலைமதிப்பான குணம்",e:"Patience is gold"},
+          {w:"நேர்மையே சிறந்த அறம்",m:"நேர்மை மிகச் சிறந்த நல்லொழுக்கம்",e:"Honesty is the best virtue"},
+          {w:"வாழ்க்கையே ஒரு பாடம்",m:"வாழ்க்கையிலிருந்து கற்றுக்கொள்ளலாம்",e:"Life is a lesson"},
+          {w:"முயற்சி திருவினையாக்கும்",m:"முயற்சியால் வெற்றி பெறலாம்",e:"Effort brings success"},
+        ]
+      },
+      {
+        num: 3,
+        title: "தொழில்நுட்பம்",
+        words: [
+          {w:"செயற்கை நுண்ணறிவு",m:"இயந்திரங்களுக்கு கொடுக்கப்பட்ட சிந்திக்கும் திறன்",e:"Artificial Intelligence"},
+          {w:"இணையதளம்",m:"மின்னணு தகவல் தளம்",e:"Website"},
+          {w:"மென்பொருள்",m:"கணினி இயங்க தேவையான நிரல்கள்",e:"Software"},
+          {w:"வன்பொருள்",m:"கணினியின் உடல் பகுதிகள்",e:"Hardware"},
+          {w:"நிரலாக்கம்",m:"கணினிக்கு கட்டளைகள் எழுதுவது",e:"Programming"},
+          {w:"தரவு",m:"சேகரிக்கப்பட்ட தகவல்கள்",e:"Data"},
+          {w:"கிளவுட்",m:"இணையத்தில் தகவல் சேமிக்கும் இடம்",e:"Cloud"},
+          {w:"இணையம்",m:"உலகளாவிய கணினி இணைப்பு",e:"Internet"},
+          {w:"குறியாக்கம்",m:"தகவலை பாதுகாப்பாக மாற்றுவது",e:"Encryption"},
+          {w:"செயலி",m:"கைப்பேசியில் இயங்கும் மென்பொருள்",e:"App"},
+        ]
+      },
+    ]
+  },
+];
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+let student = JSON.parse(localStorage.getItem('td_student') || 'null');
+let scores  = JSON.parse(localStorage.getItem('td_scores')  || '[]');
+let customGrades = JSON.parse(localStorage.getItem('td_custom_grades') || '[]');
+
+// Active grades = custom (if any) merged with builtin
+function getAllGrades() {
+  if (customGrades.length === 0) return BUILTIN_GRADES;
+  // merge: custom overrides builtin by grade number
+  const map = {};
+  BUILTIN_GRADES.forEach(g => map[g.grade] = g);
+  customGrades.forEach(g => map[g.grade] = g);
+  return Object.values(map).sort((a,b) => a.grade - b.grade);
+}
+
+let curGrade = null, curLesson = null, curWords = [];
+let stIdx = 0;                          // study index
+let curIdx = 0, results = [], rptCnt = 0, okCnt = 0, noCnt = 0;
+let startTime = 0, spdRate = 0.5, isSpeaking = false;
+
+// ═══════════════════════════════════════════════
+// TTS
+// ═══════════════════════════════════════════════
+const synth = window.speechSynthesis;
+let voices = [];
+synth.onvoiceschanged = () => { voices = synth.getVoices(); };
+setTimeout(() => { voices = synth.getVoices(); }, 500);
+
+function getTVoice() {
+  return voices.find(v => v.lang.startsWith('ta')) ||
+         voices.find(v => v.lang.startsWith('hi')) || voices[0] || null;
+}
+
+function ttsSpeak(text, rate, elId, cb) {
+  synth.cancel();
+  const u = new SpeechSynthesisUtterance(text
+    .replace(/\u200B/g,'').replace(/\u200C/g,'').replace(/\u200D/g,'').trim());
+  u.lang = 'ta-IN'; u.rate = rate || spdRate; u.pitch = 1; u.volume = 1;
+  const v = getTVoice(); if (v) u.voice = v;
+  u.onstart = () => { isSpeaking = true; document.getElementById(elId)?.classList.add('speaking'); };
+  u.onend = u.onerror = () => { isSpeaking = false; document.getElementById(elId)?.classList.remove('speaking'); if (cb) cb(); };
+  synth.speak(u);
+}
+
+function splitGraphemes(text) {
+  const g = []; let i = 0;
+  while (i < text.length) {
+    if (text[i] === ' ') { i++; continue; }
+    let end = i + 1;
+    while (end < text.length) {
+      const c = text.charCodeAt(end);
+      if ((c >= 0x0BBE && c <= 0x0BCC) || c === 0x0BCD || c === 0x0BD7) end++;
+      else break;
+    }
+    const ch = text.substring(i, end);
+    if (ch.trim()) g.push(ch);
+    i = end;
+  }
+  return g;
+}
+
+// Study mode TTS
+function stSpeak()     { if (!isSpeaking) ttsSpeak(curWords[stIdx].w, spdRate, 'stAC'); }
+function stSpeakSlow() { if (!isSpeaking) ttsSpeak(curWords[stIdx].w, 0.22,    'stAC'); }
+
+// Dictation TTS
+function playWord() {
+  if (isSpeaking) return;
+  rptCnt++; updRpt();
+  ttsSpeak(curWords[curIdx].w, spdRate, 'mAC');
+}
+function playWordSlow() {
+  if (isSpeaking) return;
+  rptCnt++; updRpt();
+  ttsSpeak(curWords[curIdx].w, 0.22, 'mAC');
+}
+function playLetterByLetter() {
+  if (isSpeaking) return;
+  synth.cancel();
+  const chars = splitGraphemes(curWords[curIdx].w);
+  let i = 0; rptCnt++; updRpt();
+  function next() {
+    if (i >= chars.length) { isSpeaking = false; document.getElementById('mAC')?.classList.remove('speaking'); return; }
+    const u = new SpeechSynthesisUtterance(chars[i]);
+    u.lang = 'ta-IN'; u.rate = 0.28; u.pitch = 1.1;
+    const v = getTVoice(); if (v) u.voice = v;
+    if (i === 0) { isSpeaking = true; document.getElementById('mAC')?.classList.add('speaking'); }
+    u.onend = () => { i++; setTimeout(next, 380); };
+    u.onerror = () => { i++; setTimeout(next, 200); };
+    synth.speak(u);
+  }
+  next();
+}
+function updRpt() { document.getElementById('rptInfo').textContent = rptCnt > 0 ? `🔄 ${rptCnt} முறை கேட்டது` : ''; }
+function updSpd(v) {
+  spdRate = parseFloat(v);
+  const lbl = {0.1:'மிக மெதுவாக',0.2:'மிக மெதுவாக',0.3:'மெதுவாக',0.4:'மெதுவாக',0.5:'சாதாரணம்',0.6:'சாதாரணம்',0.7:'வேகமாக',0.8:'வேகமாக',0.9:'வேகமாக'};
+  document.getElementById('spdL').textContent = lbl[parseFloat(v).toFixed(1)] || 'சாதாரணம்';
+}
+
+// ═══════════════════════════════════════════════
+// ANSWER CHECK
+// ═══════════════════════════════════════════════
+function normalize(s) { return s.trim().replace(/\s+/g,' ').replace(/[\u200B\u200C\u200D]/g,''); }
+function checkTamil(correct, ans) {
+  const nc = normalize(correct), na = normalize(ans);
+  if (nc === na) return { ok: true, pct: 100 };
+  const gc = splitGraphemes(nc), ga = splitGraphemes(na);
+  const mx = Math.max(gc.length, ga.length);
+  if (!mx) return { ok: true, pct: 100 };
+  let m = 0; const mn = Math.min(gc.length, ga.length);
+  for (let i = 0; i < mn; i++) if (gc[i] === ga[i]) m++;
+  return { ok: false, pct: Math.round((m / mx) * 100) };
+}
+
+// ═══════════════════════════════════════════════
+// SETUP
+// ═══════════════════════════════════════════════
+const AVATARS = ['👦','👧','🧑','👨‍🎓','👩‍🎓','🦊','🐼','🦁','🐯','🐨','🌟','🌈','🎯','📚','✏️'];
+let selAv = '👦', selGr = 1;
+
+function initSetup() {
+  document.getElementById('avGrid').innerHTML =
+    AVATARS.map((a,i) => `<button class="av-btn${i===0?' sel':''}" onclick="selAvatar(this,'${a}')">${a}</button>`).join('');
+  document.getElementById('grGrid').innerHTML =
+    Array.from({length:8},(_,i) => `<button class="gr-btn${i===0?' sel':''}" onclick="selGrade(this,${i+1})">${i+1}</button>`).join('');
+}
+function selAvatar(btn, a) { document.querySelectorAll('.av-btn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); selAv = a; }
+function selGrade(btn, g)  { document.querySelectorAll('#grGrid .gr-btn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); selGr = g; }
+function startApp() {
+  const name = document.getElementById('nameInp').value.trim();
+  if (!name) { alert('பெயரை உள்ளிடு!'); return; }
+  student = { name, grade: selGr, avatar: selAv };
+  localStorage.setItem('td_student', JSON.stringify(student));
+  showHome();
+}
+function switchStudent() { student = null; localStorage.removeItem('td_student'); showScreen('setup'); initSetup(); }
+
+// ═══════════════════════════════════════════════
+// HOME
+// ═══════════════════════════════════════════════
+function showHome() {
+  document.getElementById('hAv').textContent   = student.avatar;
+  document.getElementById('hName').textContent  = student.name;
+  document.getElementById('hGrade').textContent = `வகுப்பு ${student.grade}`;
+  updStats(); buildGradeGrid(); showScreen('home');
+}
+function updStats() {
+  const ms = scores.filter(s => s.sn === student.name);
+  const tot = ms.length;
+  const avg = tot ? Math.round(ms.reduce((a,s)=>a+s.pct,0)/tot) : 0;
+  const best = tot ? Math.max(...ms.map(s=>s.pct)) : 0;
+  document.getElementById('stT').textContent = tot;
+  document.getElementById('stA').textContent = avg + '%';
+  document.getElementById('stB').textContent = best + '%';
+}
+function buildGradeGrid() {
+  document.getElementById('grHome').innerHTML = getAllGrades().map(g =>
+    `<div class="gr-card" onclick="showLessons(${g.grade})">
+      <div class="gi">${g.icon}</div>
+      <div class="gn">${g.tamilName}</div>
+      <div class="gc">${g.lessons.length} பாடம் · ${g.lessons.reduce((a,l)=>a+l.words.length,0)} சொற்கள்</div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+// LESSONS
+// ═══════════════════════════════════════════════
+function showLessons(gNum) {
+  curGrade = getAllGrades().find(g => g.grade === gNum);
+  document.getElementById('lesTitle').textContent = curGrade.tamilName;
+  document.getElementById('lesList').innerHTML = curGrade.lessons.map((l,i) =>
+    `<div class="les-card" onclick="showStudy(${i})">
+      <div class="ln">${i+1}</div>
+      <div class="li"><div class="lt">${l.title}</div><div class="lc">${l.words.length} சொற்கள்</div></div>
+      <div class="lg">படி → Test</div>
+    </div>`).join('');
+  showScreen('lessons');
+}
+
+// ═══════════════════════════════════════════════
+// STUDY MODE
+// ═══════════════════════════════════════════════
+function showStudy(lesIdx) {
+  curLesson = curGrade.lessons[lesIdx];
+  curWords  = [...curLesson.words];
+  stIdx = 0;
+  document.getElementById('stTitle').textContent = curLesson.title;
+  renderStudyWord();
+  renderMiniChips();
+  showScreen('study');
+  // Auto play first word after short delay
+  setTimeout(stSpeak, 700);
+}
+
+function renderStudyWord() {
+  const w = curWords[stIdx];
+  const tot = curWords.length;
+  document.getElementById('stCtr').textContent     = `${stIdx+1}/${tot}`;
+  document.getElementById('stLbl').textContent     = `சொல் ${stIdx+1}`;
+  document.getElementById('wcNum').textContent     = `${stIdx+1} / ${tot}`;
+  document.getElementById('wcWord').textContent    = w.w;
+  document.getElementById('wcMeaning').textContent = w.m || '';
+  document.getElementById('wcEn').textContent      = w.e ? `(${w.e})` : '';
+
+  // Dots
+  document.getElementById('stDots').innerHTML = curWords.map((_,i) =>
+    `<div class="dot${i < stIdx ? ' done' : i === stIdx ? ' cur' : ''}"></div>`).join('');
+
+  // Nav buttons
+  document.getElementById('stPrev').disabled = stIdx === 0;
+  document.getElementById('stPrev').style.opacity = stIdx === 0 ? '0.4' : '1';
+
+  const isLast = stIdx === tot - 1;
+  const nxt = document.getElementById('stNext');
+  nxt.textContent  = isLast ? 'முடித்துவிட்டேன் ✓' : 'அடுத்து →';
+  nxt.className    = isLast ? 'btn-next-s gold' : 'btn-next-s';
+
+  // Show start test button when user reaches last word
+  document.getElementById('startTestBtn').style.display = isLast ? 'block' : 'none';
+
+  // Highlight active chip
+  document.querySelectorAll('.mini-chip').forEach((c,i) => {
+    c.classList.toggle('active', i === stIdx);
+  });
+
+  // Auto speak when navigating
+  synth.cancel();
+}
+
+function renderMiniChips() {
+  document.getElementById('miniChips').innerHTML = curWords.map((w,i) =>
+    `<div class="mini-chip${i===0?' active':''}" onclick="jumpStudy(${i})">${w.w}</div>`).join('');
+}
+
+function stPrevWord() { if (stIdx > 0) { stIdx--; renderStudyWord(); setTimeout(stSpeak, 300); } }
+function stNextWord() {
+  if (stIdx < curWords.length - 1) { stIdx++; renderStudyWord(); setTimeout(stSpeak, 300); }
+  // If already at last, next click starts test
+  else { startDictation(); }
+}
+function jumpStudy(i) { stIdx = i; renderStudyWord(); setTimeout(stSpeak, 200); }
+
+// ═══════════════════════════════════════════════
+// DICTATION
+// ═══════════════════════════════════════════════
+function startDictation() {
+  curIdx = 0; results = []; rptCnt = 0; okCnt = 0; noCnt = 0;
+  startTime = Date.now();
+  document.getElementById('dTitle').textContent = curLesson.title;
+  updDict();
+  showScreen('dictation');
+  setTimeout(playWord, 600);
+}
+
+function updDict() {
+  const tot = curWords.length;
+  document.getElementById('dCtr').textContent   = `${curIdx+1}/${tot}`;
+  document.getElementById('pFill').style.width  = `${(curIdx/tot)*100}%`;
+  document.getElementById('brLbl').textContent  = `சொல் ${curIdx+1}`;
+  document.getElementById('brSc').textContent   = `✅ ${okCnt}  ❌ ${noCnt}`;
+  document.getElementById('ansInp').value        = '';
+  document.getElementById('ansInp').disabled     = false;
+  document.getElementById('chkBtn').disabled     = true;
+  document.getElementById('resCard').style.display = 'none';
+  document.getElementById('rptInfo').textContent = ''; rptCnt = 0;
+  document.getElementById('actBtns').innerHTML   =
+    `<div class="act-row"><button class="btn-skip" onclick="skipWord()">தவிர் ⏭️</button><button class="btn-chk" id="chkBtn" onclick="checkAns()" disabled>சரிபார் ✔️</button></div>`;
+  setTimeout(() => { const inp = document.getElementById('ansInp'); if (inp && !inp.disabled) inp.focus(); }, 150);
+}
+
+function onIC() {
+  const v = document.getElementById('ansInp').value.trim();
+  const b = document.getElementById('chkBtn'); if (b) b.disabled = !v;
+}
+function onKD(e) { if (e.key === 'Enter') checkAns(); }
+
+function checkAns() {
+  const ans = document.getElementById('ansInp').value.trim();
+  if (!ans) return;
+  const word = curWords[curIdx];
+  const res  = checkTamil(word.w, ans);
+  const obj  = { word: word.w, meaning: word.m, meaningEn: word.e, ans, ok: res.ok, pct: res.pct };
+  results.push(obj);
+  if (res.ok) { okCnt++; showConfetti(); } else { noCnt++; shakeInp(); }
+  document.getElementById('brSc').textContent = `✅ ${okCnt}  ❌ ${noCnt}`;
+  showResCard(obj);
+  document.getElementById('ansInp').disabled = true;
+  const isLast = curIdx >= curWords.length - 1;
+  document.getElementById('actBtns').innerHTML =
+    `<button class="btn-nx${isLast?' gold':''}" onclick="nextWord()">${isLast ? 'முடிவுகள் பார் 🏆' : 'அடுத்த சொல் ➡️'}</button>`;
+}
+
+function showResCard(r) {
+  const rc = document.getElementById('resCard');
+  rc.style.display = 'block';
+  rc.className = `res-card ${r.ok ? 'ok' : 'no'}`;
+  rc.innerHTML = `
+    <div class="rc-emoji">${r.ok ? '🎉' : '😕'}</div>
+    <div class="rc-lbl ${r.ok?'ok':'no'}">${r.ok ? 'சரியான பதில்!' : 'தவறான பதில்'}</div>
+    ${!r.ok ? `<div class="ans-box">
+      <div class="ar"><span class="al">சரியான விடை:</span><span class="av ok">${r.word}</span></div>
+      <div class="ar"><span class="al">உன் விடை:</span><span class="av no">${r.ans}</span></div>
+      <div class="ar"><span class="al">ஒத்திசைவு:</span><span class="av">${r.pct}%</span></div>
+    </div>` : ''}
+    <div class="mn">பொருள்: ${r.meaning}${r.meaningEn?' ('+r.meaningEn+')':''}</div>`;
+}
+
+function skipWord() {
+  results.push({ word: curWords[curIdx].w, meaning: curWords[curIdx].m, ans: '(தவிர்க்கப்பட்டது)', ok: false, pct: 0 });
+  noCnt++; nextWord();
+}
+function nextWord() {
+  if (curIdx >= curWords.length - 1) { showResults(); return; }
+  curIdx++; updDict(); setTimeout(playWord, 350);
+}
+function confirmBack() {
+  if (curIdx === 0 || confirm('பயிற்சியை விட்டுச் செல்லவா?')) { synth.cancel(); showScreen('study'); }
+}
+function retryLesson() { startDictation(); }
+
+// ═══════════════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════════════
+function showResults() {
+  synth.cancel();
+  const sec  = Math.round((Date.now() - startTime) / 1000);
+  const pct  = results.length ? Math.round((okCnt / results.length) * 100) : 0;
+  scores.push({ sn: student.name, g: curGrade.grade, l: curLesson.num, pct, ok: okCnt, tot: results.length, t: sec, d: new Date().toISOString() });
+  if (scores.length > 200) scores = scores.slice(-200);
+  localStorage.setItem('td_scores', JSON.stringify(scores));
+
+  document.getElementById('rPct').textContent = pct + '%';
+  document.getElementById('rPct').style.color = pct>=80?'#4CAF50':pct>=50?'#FF9800':'#F44336';
+  document.getElementById('rFrac').textContent = `${okCnt}/${results.length}`;
+  const arc = document.getElementById('sArc');
+  arc.style.stroke = pct>=80?'#4CAF50':pct>=50?'#FF9800':'#F44336';
+  setTimeout(() => { arc.style.transition = 'stroke-dashoffset 1.5s ease'; arc.style.strokeDashoffset = 427 - (427*pct/100); }, 80);
+
+  const grade = pct>=90?'A+':pct>=80?'A':pct>=70?'B+':pct>=60?'B':pct>=50?'C':'D';
+  const emj   = {'A+':'🏆','A':'🌟','B+':'👏','B':'👍','C':'💪','D':'📖'};
+  document.getElementById('gEm').textContent  = emj[grade] || '📝';
+  document.getElementById('gBdg').textContent = `தரம்: ${grade}`;
+  const msgs = pct>=90 ? ['அருமை! தமிழ் மன்னன்! 👑','கெத்து! நீ தான் டாப்! 🏆'] :
+               pct>=60 ? ['நல்ல முயற்சி! 👍','பரவாயில்லை! மேலும் முயற்சி செய் 💪'] :
+               ['கவலைப்படாதே! மீண்டும் படித்து முயற்சி செய்! 📖'];
+  document.getElementById('encT').textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  const m = Math.floor(sec/60), s = sec%60;
+  document.getElementById('rOk').textContent = okCnt;
+  document.getElementById('rNo').textContent = results.length - okCnt;
+  document.getElementById('rTm').textContent = m ? `${m}m ${s}s` : `${s}s`;
+  document.getElementById('riList').innerHTML = results.map(r =>
+    `<div class="ri ${r.ok?'ok':'no'}">
+      <div class="ric ${r.ok?'c':'w'}">${r.ok?'✅':'❌'}</div>
+      <div style="flex:1"><div class="riw">${r.word}</div>${!r.ok?`<div class="ria">உன் விடை: ${r.ans}</div>`:''}</div>
+      <div class="rip ${r.ok?'c':'w'}">${r.pct}%</div>
+    </div>`).join('');
+  if (pct >= 70) showConfetti();
+  showScreen('result'); updStats();
+}
+function goHome() { showScreen('home'); updStats(); }
+
+// ═══════════════════════════════════════════════
+// ADMIN — JSON Load
+// ═══════════════════════════════════════════════
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', ['paste','url'][i]===tab));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+
+function showAdmMsg(msg, type) {
+  const el = document.getElementById('admMsg');
+  el.style.display = 'block';
+  el.className = 'adm-msg ' + type;
+  el.textContent = msg;
+  if (type === 'ok') setTimeout(() => { el.style.display='none'; }, 3000);
+}
+
+function parseAndSaveGrade(jsonStr) {
+  let data;
+  try { data = JSON.parse(jsonStr.trim()); } catch(e) { showAdmMsg('❌ JSON தவறு: ' + e.message, 'err'); return false; }
+
+  // Support both single grade object and array of grades
+  const grades = Array.isArray(data) ? data : [data];
+
+  for (const g of grades) {
+    if (!g.grade || !g.lessons) { showAdmMsg('❌ "grade" மற்றும் "lessons" field இருக்க வேண்டும்', 'err'); return false; }
+    // Normalise lesson structure
+    g.lessons = g.lessons.map(l => ({
+      num: l.lessonNumber || l.num || 1,
+      title: l.title || 'பாடம்',
+      words: (l.words || []).map(w => ({
+        w: w.word || w.w || '',
+        m: w.meaning || w.m || '',
+        e: w.meaningEn || w.e || ''
+      })).filter(w => w.w)
+    }));
+    // Remove existing grade with same number, then push
+    customGrades = customGrades.filter(cg => cg.grade !== g.grade);
+    customGrades.push(g);
+  }
+
+  localStorage.setItem('td_custom_grades', JSON.stringify(customGrades));
+  showAdmMsg(`✅ ${grades.length} வகுப்பு(கள்) சேர்க்கப்பட்டது!`, 'ok');
+  renderLoadedList();
+  buildGradeGrid();
+  return true;
+}
+
+function loadFromPaste() {
+  const txt = document.getElementById('jsonInp').value.trim();
+  if (!txt) { showAdmMsg('❌ JSON இல்லை — paste செய்யுங்கள்', 'err'); return; }
+  if (parseAndSaveGrade(txt)) document.getElementById('jsonInp').value = '';
+}
+
+async function loadFromUrl() {
+  const url = document.getElementById('urlInp').value.trim();
+  if (!url) { showAdmMsg('❌ URL இல்லை', 'err'); return; }
+  showAdmMsg('⏳ Loading...', 'ok');
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const txt = await res.text();
+    parseAndSaveGrade(txt);
+  } catch(e) {
+    showAdmMsg('❌ Load தோல்வி: ' + e.message, 'err');
+  }
+}
+
+function renderLoadedList() {
+  const sec = document.getElementById('loadedSection');
+  const lst = document.getElementById('loadedList');
+  if (customGrades.length === 0) { sec.style.display = 'none'; return; }
+  sec.style.display = 'block';
+  lst.innerHTML = customGrades.map(g =>
+    `<div class="ll-card">
+      <span class="ll-icon">${g.icon||'📚'}</span>
+      <div class="ll-info">
+        <div class="ll-name">${g.tamilName || 'வகுப்பு ' + g.grade}</div>
+        <div class="ll-cnt">${g.lessons.length} பாடம் · ${g.lessons.reduce((a,l)=>a+l.words.length,0)} சொற்கள்</div>
+      </div>
+      <button class="ll-del" onclick="delGrade(${g.grade})">🗑️</button>
+    </div>`).join('');
+}
+
+function delGrade(gNum) {
+  if (!confirm(`வகுப்பு ${gNum} நீக்கவா?`)) return;
+  customGrades = customGrades.filter(g => g.grade !== gNum);
+  localStorage.setItem('td_custom_grades', JSON.stringify(customGrades));
+  renderLoadedList(); buildGradeGrid();
+}
+
+// ═══════════════════════════════════════════════
+// ANIMATIONS
+// ═══════════════════════════════════════════════
+function shakeInp() { const i=document.getElementById('ansInp'); i.classList.remove('shake'); void i.offsetWidth; i.classList.add('shake'); }
+const CC = ['#B71C1C','#FFB300','#4CAF50','#2196F3','#E91E63','#9C27B0','#FF5722'];
+function showConfetti() {
+  const w = document.getElementById('cfWrap'); w.innerHTML = '';
+  for (let i=0;i<55;i++) {
+    const c=document.createElement('div'); c.className='cf';
+    const sz=6+Math.random()*7;
+    c.style.cssText=`left:${Math.random()*100}%;background:${CC[Math.floor(Math.random()*CC.length)]};width:${sz}px;height:${sz}px;animation-duration:${1.4+Math.random()*1.6}s;animation-delay:${Math.random()*.4}s;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    w.appendChild(c);
+  }
+  setTimeout(()=>w.innerHTML='',3500);
+}
+
+// ═══════════════════════════════════════════════
+// SCREENS
+// ═══════════════════════════════════════════════
+function showScreen(id) {
+  synth.cancel(); isSpeaking = false;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if (id === 'admin') renderLoadedList();
+}
+
+// ── PWA ──
+let dp = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); dp = e; });
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+
+// ═══════════════════════════════════════════════
+// DATA FOLDER AUTO-LOADER
+// data/grade_1.json ... grade_8.json auto load
+// GitHub-ல் file மாற்றினால் app-ல் reflect ஆகும்
+// ═══════════════════════════════════════════════
+async function autoLoadDataFolder() {
+  const newGrades = [];
+  for (let g = 1; g <= 8; g++) {
+    try {
+      const res = await fetch(`data/grade_${g}.json?v=${Date.now()}`);
+      if (!res.ok) continue;
+      const data = await res.json();
+      data.lessons = (data.lessons || []).map(l => ({
+        num: l.lessonNumber || l.num || g,
+        title: l.title || 'பாடம்',
+        words: (l.words || []).map(w => ({
+          w: w.word || w.w || '',
+          m: w.meaning || w.m || '',
+          e: w.meaningEn || w.e || ''
+        })).filter(w => w.w)
+      }));
+      newGrades.push(data);
+    } catch (_) { /* file இல்லை — skip */ }
+  }
+  if (newGrades.length > 0) {
+    localStorage.setItem('td_folder_grades', JSON.stringify(newGrades));
+  }
+}
+
+// Override getAllGrades: folder > admin-paste > builtin
+function getAllGrades() {
+  const fg = JSON.parse(localStorage.getItem('td_folder_grades') || '[]');
+  if (fg.length === 0 && customGrades.length === 0) return BUILTIN_GRADES;
+  const map = {};
+  BUILTIN_GRADES.forEach(g => map[g.grade] = g);
+  customGrades.forEach(g   => map[g.grade] = g);
+  fg.forEach(g             => map[g.grade] = g);
+  return Object.values(map).sort((a,b) => a.grade - b.grade);
+}
+
+// ── BOOT ──
+initSetup();
+autoLoadDataFolder().finally(() => {
+  setTimeout(() => {
+    if (student) showHome();
+    else showScreen('setup');
+  }, 1600);
+});
+</script>
+</body>
+</html>

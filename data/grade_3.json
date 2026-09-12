@@ -1,0 +1,57 @@
+{
+  "grade": 3,
+  "displayName": "3rd Standard",
+  "tamilName": "மூன்றாம் வகுப்பு",
+  "icon": "🌳",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "விலங்குகள்",
+      "words": [
+        { "id": "g3_l1_1",  "word": "யானை",   "meaning": "மிகப் பெரிய தாவர உண்ணி விலங்கு", "meaningEn": "Elephant" },
+        { "id": "g3_l1_2",  "word": "சிங்கம்", "meaning": "காட்டின் அரசன்",         "meaningEn": "Lion" },
+        { "id": "g3_l1_3",  "word": "புலி",    "meaning": "கோடுகள் கொண்ட விலங்கு", "meaningEn": "Tiger" },
+        { "id": "g3_l1_4",  "word": "குரங்கு", "meaning": "மரத்தில் வாழும் விலங்கு", "meaningEn": "Monkey" },
+        { "id": "g3_l1_5",  "word": "முயல்",   "meaning": "நீண்ட காதுகள் கொண்ட விலங்கு", "meaningEn": "Rabbit" },
+        { "id": "g3_l1_6",  "word": "ஆமை",    "meaning": "மெதுவாக நடக்கும் விலங்கு", "meaningEn": "Tortoise" },
+        { "id": "g3_l1_7",  "word": "மான்",    "meaning": "வேகமாக ஓடும் விலங்கு",  "meaningEn": "Deer" },
+        { "id": "g3_l1_8",  "word": "கரடி",    "meaning": "கனமான உடல் கொண்ட விலங்கு", "meaningEn": "Bear" },
+        { "id": "g3_l1_9",  "word": "நரி",     "meaning": "தந்திரமான விலங்கு",      "meaningEn": "Fox" },
+        { "id": "g3_l1_10", "word": "ஒட்டகம்", "meaning": "பாலை வெளியில் வாழும் விலங்கு", "meaningEn": "Camel" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "எளிய வாக்கியங்கள்",
+      "category": "sentence",
+      "words": [
+        { "id": "g3_l2_1",  "word": "நான் படிக்கிறேன்",        "meaning": "தன்னைப் பற்றிய படிப்பு வாக்கியம்", "meaningEn": "I am studying" },
+        { "id": "g3_l2_2",  "word": "அவள் பாடுகிறாள்",        "meaning": "ஒரு பெண் பற்றிய வாக்கியம்",       "meaningEn": "She is singing" },
+        { "id": "g3_l2_3",  "word": "மழை பெய்கிறது",          "meaning": "இயற்கை நிகழ்வு வாக்கியம்",       "meaningEn": "It is raining" },
+        { "id": "g3_l2_4",  "word": "பூ மலர்கிறது",           "meaning": "தாவர வாக்கியம்",                 "meaningEn": "Flower is blooming" },
+        { "id": "g3_l2_5",  "word": "குழந்தை சிரிக்கிறது",    "meaning": "குழந்தை பற்றிய வாக்கியம்",       "meaningEn": "Baby is laughing" },
+        { "id": "g3_l2_6",  "word": "பறவை பறக்கிறது",         "meaning": "பறவை பற்றிய வாக்கியம்",         "meaningEn": "Bird is flying" },
+        { "id": "g3_l2_7",  "word": "சூரியன் உதிக்கிறது",     "meaning": "காலை வாக்கியம்",                "meaningEn": "Sun is rising" },
+        { "id": "g3_l2_8",  "word": "நிலா ஒளிர்கிறது",        "meaning": "இரவு வாக்கியம்",                "meaningEn": "Moon is shining" },
+        { "id": "g3_l2_9",  "word": "மீன் நீந்துகிறது",       "meaning": "நீர் வாழ் உயிர் வாக்கியம்",     "meaningEn": "Fish is swimming" },
+        { "id": "g3_l2_10", "word": "காற்று வீசுகிறது",        "meaning": "இயற்கை வாக்கியம்",              "meaningEn": "Wind is blowing" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "காய்கறிகள்",
+      "words": [
+        { "id": "g3_l3_1",  "word": "தக்காளி",   "meaning": "சிவப்பு நிற காய்கறி",    "meaningEn": "Tomato" },
+        { "id": "g3_l3_2",  "word": "வெங்காயம்", "meaning": "கண்ணீர் வரவழைக்கும் காய்", "meaningEn": "Onion" },
+        { "id": "g3_l3_3",  "word": "கத்திரிக்காய்", "meaning": "கருப்பு நிற நீள் காய்", "meaningEn": "Brinjal" },
+        { "id": "g3_l3_4",  "word": "பீர்க்கங்காய்", "meaning": "பச்சை நிற நீண்ட காய்", "meaningEn": "Ridge gourd" },
+        { "id": "g3_l3_5",  "word": "சுரைக்காய்",  "meaning": "வெண்மை நிற காய்",       "meaningEn": "Bottle gourd" },
+        { "id": "g3_l3_6",  "word": "முள்ளங்கி",   "meaning": "வேர் காய்கறி",           "meaningEn": "Radish" },
+        { "id": "g3_l3_7",  "word": "கேரட்",       "meaning": "ஆரஞ்சு நிற வேர் காய்",  "meaningEn": "Carrot" },
+        { "id": "g3_l3_8",  "word": "பட்டாணி",    "meaning": "பச்சை விதைகள்",           "meaningEn": "Peas" },
+        { "id": "g3_l3_9",  "word": "உருளைக்கிழங்கு", "meaning": "மண்ணில் விளையும் காய்", "meaningEn": "Potato" },
+        { "id": "g3_l3_10", "word": "பாவக்காய்",   "meaning": "கசப்பான காய்கறி",       "meaningEn": "Bitter gourd" }
+      ]
+    }
+  ]
+}

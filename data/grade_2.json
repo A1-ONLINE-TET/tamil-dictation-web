@@ -1,0 +1,56 @@
+{
+  "grade": 2,
+  "displayName": "2nd Standard",
+  "tamilName": "இரண்டாம் வகுப்பு",
+  "icon": "🌿",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "குடும்பம்",
+      "words": [
+        { "id": "g2_l1_1",  "word": "தாத்தா",      "meaning": "அப்பாவின் அல்லது அம்மாவின் தந்தை", "meaningEn": "Grandfather" },
+        { "id": "g2_l1_2",  "word": "பாட்டி",      "meaning": "அப்பாவின் அல்லது அம்மாவின் தாய்",  "meaningEn": "Grandmother" },
+        { "id": "g2_l1_3",  "word": "அண்ணன்",     "meaning": "மூத்த சகோதரன்",   "meaningEn": "Elder brother" },
+        { "id": "g2_l1_4",  "word": "அக்கா",       "meaning": "மூத்த சகோதரி",   "meaningEn": "Elder sister" },
+        { "id": "g2_l1_5",  "word": "தம்பி",       "meaning": "இளைய சகோதரன்",   "meaningEn": "Younger brother" },
+        { "id": "g2_l1_6",  "word": "தங்கை",       "meaning": "இளைய சகோதரி",   "meaningEn": "Younger sister" },
+        { "id": "g2_l1_7",  "word": "மாமா",        "meaning": "தாயின் சகோதரன்", "meaningEn": "Uncle" },
+        { "id": "g2_l1_8",  "word": "அத்தை",      "meaning": "தந்தையின் சகோதரி", "meaningEn": "Aunt" },
+        { "id": "g2_l1_9",  "word": "குழந்தை",    "meaning": "சிறு வயதினர்",    "meaningEn": "Child" },
+        { "id": "g2_l1_10", "word": "குடும்பம்",  "meaning": "ஒரே வீட்டில் வாழும் உறவினர்", "meaningEn": "Family" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "பழங்கள்",
+      "words": [
+        { "id": "g2_l2_1",  "word": "மாம்பழம்",    "meaning": "மாமரத்தின் பழம்",  "meaningEn": "Mango" },
+        { "id": "g2_l2_2",  "word": "வாழைப்பழம்", "meaning": "வாழை மரத்தின் பழம்", "meaningEn": "Banana" },
+        { "id": "g2_l2_3",  "word": "ஆப்பிள்",    "meaning": "சிவப்பு நிற பழம்", "meaningEn": "Apple" },
+        { "id": "g2_l2_4",  "word": "திராட்சை",   "meaning": "கொத்தாக வரும் பழம்", "meaningEn": "Grapes" },
+        { "id": "g2_l2_5",  "word": "ஆரஞ்சு",     "meaning": "சாற்று பழம்",      "meaningEn": "Orange" },
+        { "id": "g2_l2_6",  "word": "மாதுளை",     "meaning": "சிவப்பு விதைகள் கொண்ட பழம்", "meaningEn": "Pomegranate" },
+        { "id": "g2_l2_7",  "word": "பலாப்பழம்",  "meaning": "பெரிய முட்கள் கொண்ட பழம்", "meaningEn": "Jackfruit" },
+        { "id": "g2_l2_8",  "word": "கொய்யா",     "meaning": "வெள்ளை சதை கொண்ட பழம்", "meaningEn": "Guava" },
+        { "id": "g2_l2_9",  "word": "பப்பாளி",    "meaning": "மஞ்சள் நிற பழம்",  "meaningEn": "Papaya" },
+        { "id": "g2_l2_10", "word": "தர்பூசணி",   "meaning": "பெரிய நீர்ச்சத்து பழம்", "meaningEn": "Watermelon" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "நிறங்கள்",
+      "words": [
+        { "id": "g2_l3_1",  "word": "சிவப்பு",       "meaning": "தீ போன்ற நிறம்",     "meaningEn": "Red" },
+        { "id": "g2_l3_2",  "word": "நீலம்",         "meaning": "வான் போன்ற நிறம்",   "meaningEn": "Blue" },
+        { "id": "g2_l3_3",  "word": "பச்சை",         "meaning": "மரத்தின் நிறம்",     "meaningEn": "Green" },
+        { "id": "g2_l3_4",  "word": "மஞ்சள்",        "meaning": "சூரியன் போன்ற நிறம்","meaningEn": "Yellow" },
+        { "id": "g2_l3_5",  "word": "வெள்ளை",        "meaning": "பால் போன்ற நிறம்",   "meaningEn": "White" },
+        { "id": "g2_l3_6",  "word": "கருப்பு",       "meaning": "இரவு போன்ற நிறம்",   "meaningEn": "Black" },
+        { "id": "g2_l3_7",  "word": "ஊதா",           "meaning": "கலப்பு நிறம்",       "meaningEn": "Purple" },
+        { "id": "g2_l3_8",  "word": "இளஞ்சிவப்பு",  "meaning": "மென்மையான சிவப்பு",  "meaningEn": "Pink" },
+        { "id": "g2_l3_9",  "word": "பழுப்பு",       "meaning": "மண் நிறம்",           "meaningEn": "Brown" },
+        { "id": "g2_l3_10", "word": "வானவில்",        "meaning": "ஏழு நிறங்கள் கொண்ட வில்", "meaningEn": "Rainbow" }
+      ]
+    }
+  ]
+}

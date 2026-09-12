@@ -1,0 +1,57 @@
+{
+  "grade": 8,
+  "displayName": "8th Standard",
+  "tamilName": "எட்டாம் வகுப்பு",
+  "icon": "📕",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "கடினமான சொற்கள்",
+      "words": [
+        { "id": "g8_l1_1",  "word": "சுயசரிதை",           "meaning": "தன் வாழ்க்கையை தானே எழுதுவது",         "meaningEn": "Autobiography" },
+        { "id": "g8_l1_2",  "word": "ஒப்புக்கொள்ளுதல்",  "meaning": "ஒரு கருத்தை ஏற்றுக்கொள்வது",           "meaningEn": "Agreement" },
+        { "id": "g8_l1_3",  "word": "பொறுப்பேற்றல்",      "meaning": "ஒரு கடமையை ஏற்றுக்கொள்வது",            "meaningEn": "Taking responsibility" },
+        { "id": "g8_l1_4",  "word": "சுற்றுப்புறம்",      "meaning": "ஒரு இடத்தைச் சுற்றியுள்ள பகுதி",       "meaningEn": "Surroundings" },
+        { "id": "g8_l1_5",  "word": "தொலைக்காட்சி",       "meaning": "தொலைவில் உள்ளதை காட்டும் கருவி",       "meaningEn": "Television" },
+        { "id": "g8_l1_6",  "word": "கணினி",              "meaning": "தகவல் செயலாக்க இயந்திரம்",             "meaningEn": "Computer" },
+        { "id": "g8_l1_7",  "word": "விண்வெளி",           "meaning": "பூமிக்கு வெளியே உள்ள வெளி",            "meaningEn": "Space" },
+        { "id": "g8_l1_8",  "word": "புவியியல்",          "meaning": "பூமியின் அமைப்பை படிக்கும் துறை",      "meaningEn": "Geography" },
+        { "id": "g8_l1_9",  "word": "பொருளாதாரம்",        "meaning": "உற்பத்தி விநியோகம் நுகர்வு பற்றிய துறை", "meaningEn": "Economy" },
+        { "id": "g8_l1_10", "word": "அரசியலமைப்பு",       "meaning": "நாட்டின் அடிப்படை சட்டங்கள்",          "meaningEn": "Constitution" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "பழமொழிகள்",
+      "category": "sentence",
+      "words": [
+        { "id": "g8_l2_1",  "word": "ஆலும் வேலும் பல்லுக்குறுதி",   "meaning": "ஆல் மற்றும் வேல் மரங்கள் பல்லை உறுதிப்படுத்தும்", "meaningEn": "Banyan and Neem strengthen teeth" },
+        { "id": "g8_l2_2",  "word": "கற்றது கைமண் அளவு",            "meaning": "நாம் கற்றது மிகவும் சிறியது",                       "meaningEn": "What we learned is a handful" },
+        { "id": "g8_l2_3",  "word": "அறிவே ஆற்றல்",                 "meaning": "அறிவே மிகப்பெரிய சக்தி",                           "meaningEn": "Knowledge is power" },
+        { "id": "g8_l2_4",  "word": "உழைப்பே உயர்வு",               "meaning": "உழைப்பால் மட்டுமே உயரலாம்",                       "meaningEn": "Work is worship" },
+        { "id": "g8_l2_5",  "word": "ஒழுக்கமே உயர்வு தரும்",       "meaning": "ஒழுக்கம் மனிதனை உயர வைக்கும்",                    "meaningEn": "Discipline brings elevation" },
+        { "id": "g8_l2_6",  "word": "கல்லாதவரே கண்ணில்லாதவர்",     "meaning": "படிக்காதவர் பார்வையற்றவர் போன்றவர்",               "meaningEn": "Uneducated are blind" },
+        { "id": "g8_l2_7",  "word": "பொறுமையே பொன்னாகும்",         "meaning": "பொறுமை மிக விலைமதிப்பான குணம்",                   "meaningEn": "Patience is gold" },
+        { "id": "g8_l2_8",  "word": "நேர்மையே சிறந்த அறம்",        "meaning": "நேர்மை மிகச் சிறந்த நல்லொழுக்கம்",                "meaningEn": "Honesty is the best virtue" },
+        { "id": "g8_l2_9",  "word": "வாழ்க்கையே ஒரு பாடம்",        "meaning": "வாழ்க்கையிலிருந்து கற்றுக்கொள்ளலாம்",             "meaningEn": "Life is a lesson" },
+        { "id": "g8_l2_10", "word": "முயற்சி திருவினையாக்கும்",     "meaning": "முயற்சியால் வெற்றி பெறலாம்",                      "meaningEn": "Effort brings success" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "தொழில்நுட்பம்",
+      "words": [
+        { "id": "g8_l3_1",  "word": "செயற்கை நுண்ணறிவு",  "meaning": "இயந்திரங்களுக்கு கொடுக்கப்பட்ட சிந்திக்கும் திறன்", "meaningEn": "Artificial Intelligence", "category": "sentence" },
+        { "id": "g8_l3_2",  "word": "இணையதளம்",           "meaning": "மின்னணு தகவல் தளம்",                                  "meaningEn": "Website" },
+        { "id": "g8_l3_3",  "word": "மென்பொருள்",         "meaning": "கணினி இயங்க தேவையான நிரல்கள்",                        "meaningEn": "Software" },
+        { "id": "g8_l3_4",  "word": "வன்பொருள்",          "meaning": "கணினியின் உடல் பகுதிகள்",                             "meaningEn": "Hardware" },
+        { "id": "g8_l3_5",  "word": "நிரலாக்கம்",         "meaning": "கணினிக்கு கட்டளைகள் எழுதுவது",                        "meaningEn": "Programming" },
+        { "id": "g8_l3_6",  "word": "தரவு",               "meaning": "சேகரிக்கப்பட்ட தகவல்கள்",                            "meaningEn": "Data" },
+        { "id": "g8_l3_7",  "word": "கிளவுட்",            "meaning": "இணையத்தில் தகவல் சேமிக்கும் இடம்",                    "meaningEn": "Cloud" },
+        { "id": "g8_l3_8",  "word": "இணையம்",             "meaning": "உலகளாவிய கணினி இணைப்பு",                             "meaningEn": "Internet" },
+        { "id": "g8_l3_9",  "word": "குறியாக்கம்",        "meaning": "தகவலை பாதுகாப்பாக மாற்றுவது",                         "meaningEn": "Encryption" },
+        { "id": "g8_l3_10", "word": "செயலி",              "meaning": "கைப்பேசியில் இயங்கும் மென்பொருள்",                   "meaningEn": "App" }
+      ]
+    }
+  ]
+}

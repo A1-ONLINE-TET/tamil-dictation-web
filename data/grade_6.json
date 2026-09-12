@@ -1,0 +1,57 @@
+{
+  "grade": 6,
+  "displayName": "6th Standard",
+  "tamilName": "ஆறாம் வகுப்பு",
+  "icon": "📘",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "அறிவியல் சொற்கள்",
+      "words": [
+        { "id": "g6_l1_1",  "word": "பூமி",           "meaning": "நாம் வாழும் கோள்",                "meaningEn": "Earth" },
+        { "id": "g6_l1_2",  "word": "ஈர்ப்பு விசை",  "meaning": "பொருட்களை கீழே இழுக்கும் சக்தி", "meaningEn": "Gravity", "category": "sentence" },
+        { "id": "g6_l1_3",  "word": "ஒளிச்சேர்க்கை", "meaning": "தாவரங்கள் உணவு தயாரிக்கும் முறை", "meaningEn": "Photosynthesis" },
+        { "id": "g6_l1_4",  "word": "காந்தம்",        "meaning": "இரும்பை ஈர்க்கும் பொருள்",        "meaningEn": "Magnet" },
+        { "id": "g6_l1_5",  "word": "ஆற்றல்",         "meaning": "வேலை செய்யும் திறன்",             "meaningEn": "Energy" },
+        { "id": "g6_l1_6",  "word": "மின்சாரம்",      "meaning": "மின்னணுக்களின் ஓட்டம்",           "meaningEn": "Electricity" },
+        { "id": "g6_l1_7",  "word": "வெப்பநிலை",     "meaning": "வெப்பத்தின் அளவு",                "meaningEn": "Temperature" },
+        { "id": "g6_l1_8",  "word": "திசைவேகம்",     "meaning": "ஒரு திசையில் செல்லும் வேகம்",    "meaningEn": "Velocity" },
+        { "id": "g6_l1_9",  "word": "நுண்ணுயிர்",    "meaning": "கண்ணுக்கு தெரியாத உயிரினம்",     "meaningEn": "Microorganism" },
+        { "id": "g6_l1_10", "word": "சுற்றுச்சூழல்", "meaning": "நம்மைச் சுற்றியுள்ள இயற்கை",     "meaningEn": "Environment" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "வாக்கியப் பயிற்சி",
+      "category": "sentence",
+      "words": [
+        { "id": "g6_l2_1",  "word": "தமிழ் மிகப் பழமையான மொழி",       "meaning": "தமிழ் மொழியின் சிறப்பு வாக்கியம்",     "meaningEn": "Tamil is a very ancient language" },
+        { "id": "g6_l2_2",  "word": "கல்வியே அறிவின் கண்",             "meaning": "கல்வியின் முக்கியத்துவம்",             "meaningEn": "Education is the eye of knowledge" },
+        { "id": "g6_l2_3",  "word": "நேரத்தின் அருமை உணர்",           "meaning": "நேர மேலாண்மை பற்றிய வாக்கியம்",       "meaningEn": "Understand the value of time" },
+        { "id": "g6_l2_4",  "word": "அறிவை வளர்க்கும் கல்வி",         "meaning": "கல்வியின் பயன் பற்றிய வாக்கியம்",     "meaningEn": "Education grows knowledge" },
+        { "id": "g6_l2_5",  "word": "உழைப்பே உயர்வின் அடிப்படை",     "meaning": "உழைப்பின் சிறப்பு பற்றிய வாக்கியம்", "meaningEn": "Hard work is the foundation of success" },
+        { "id": "g6_l2_6",  "word": "நல்லதை நினைப்போம்",              "meaning": "நேர்மறை சிந்தனை வாக்கியம்",           "meaningEn": "Lets think good" },
+        { "id": "g6_l2_7",  "word": "இயற்கையைக் காப்போம்",            "meaning": "சுற்றுச்சூழல் பாதுகாப்பு வாக்கியம்",  "meaningEn": "Lets protect nature" },
+        { "id": "g6_l2_8",  "word": "மரம் நடுவோம் வளம் பெறுவோம்",   "meaning": "மரம் நடுதலின் பயன்",                 "meaningEn": "Plant trees prosper" },
+        { "id": "g6_l2_9",  "word": "பெற்றோரை மதிப்போம்",            "meaning": "பெற்றோர் மரியாதை வாக்கியம்",         "meaningEn": "Respect parents" },
+        { "id": "g6_l2_10", "word": "நாட்டை நேசிப்போம்",              "meaning": "தேசப்பற்று வாக்கியம்",               "meaningEn": "Love our nation" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "கணிதச் சொற்கள்",
+      "words": [
+        { "id": "g6_l3_1",  "word": "கூட்டல்",      "meaning": "எண்களை சேர்க்கும் செயல்",        "meaningEn": "Addition" },
+        { "id": "g6_l3_2",  "word": "கழித்தல்",     "meaning": "எண்களை குறைக்கும் செயல்",        "meaningEn": "Subtraction" },
+        { "id": "g6_l3_3",  "word": "பெருக்கல்",    "meaning": "எண்களை மடங்காக்கும் செயல்",     "meaningEn": "Multiplication" },
+        { "id": "g6_l3_4",  "word": "வகுத்தல்",     "meaning": "எண்களை சம பங்காக்கும் செயல்",   "meaningEn": "Division" },
+        { "id": "g6_l3_5",  "word": "பின்னம்",      "meaning": "முழுமையற்ற எண்",                 "meaningEn": "Fraction" },
+        { "id": "g6_l3_6",  "word": "தசமம்",        "meaning": "புள்ளியுடன் கூடிய எண்",          "meaningEn": "Decimal" },
+        { "id": "g6_l3_7",  "word": "சதவீதம்",      "meaning": "நூறில் ஒரு பகுதி",               "meaningEn": "Percentage" },
+        { "id": "g6_l3_8",  "word": "கோணம்",        "meaning": "இரு கோடுகளுக்கு இடையே உள்ள அளவு", "meaningEn": "Angle" },
+        { "id": "g6_l3_9",  "word": "பரப்பளவு",     "meaning": "ஒரு தளத்தின் அளவு",              "meaningEn": "Area" },
+        { "id": "g6_l3_10", "word": "சுற்றளவு",     "meaning": "ஒரு வடிவத்தின் வெளிப்பரப்பு",   "meaningEn": "Perimeter" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "grade": 4,
+  "displayName": "4th Standard",
+  "tamilName": "நான்காம் வகுப்பு",
+  "icon": "📖",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "தொழில்கள்",
+      "words": [
+        { "id": "g4_l1_1",  "word": "ஆசிரியர்",        "meaning": "கல்வி கற்பிப்பவர்",      "meaningEn": "Teacher" },
+        { "id": "g4_l1_2",  "word": "மருத்துவர்",       "meaning": "நோய் குணப்படுத்துபவர்",  "meaningEn": "Doctor" },
+        { "id": "g4_l1_3",  "word": "பொறியாளர்",        "meaning": "இயந்திரங்கள் வடிவமைப்பவர்", "meaningEn": "Engineer" },
+        { "id": "g4_l1_4",  "word": "விவசாயி",          "meaning": "நிலத்தில் பயிர் செய்பவர்", "meaningEn": "Farmer" },
+        { "id": "g4_l1_5",  "word": "காவலர்",           "meaning": "சட்டம் காப்பவர்",        "meaningEn": "Police" },
+        { "id": "g4_l1_6",  "word": "தீயணைப்பாளர்",    "meaning": "தீ அணைப்பவர்",           "meaningEn": "Firefighter" },
+        { "id": "g4_l1_7",  "word": "வழக்கறிஞர்",       "meaning": "சட்டம் படித்தவர்",       "meaningEn": "Lawyer" },
+        { "id": "g4_l1_8",  "word": "விமானி",           "meaning": "விமானம் ஓட்டுபவர்",      "meaningEn": "Pilot" },
+        { "id": "g4_l1_9",  "word": "செவிலியர்",        "meaning": "மருத்துவமனையில் பணிசெய்பவர்", "meaningEn": "Nurse" },
+        { "id": "g4_l1_10", "word": "அஞ்சல்காரர்",      "meaning": "கடிதம் கொண்டு செல்பவர்", "meaningEn": "Postman" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "இயற்கை",
+      "words": [
+        { "id": "g4_l2_1",  "word": "சூரியன்",     "meaning": "ஒளி மற்றும் வெப்பம் தரும் விண்மீன்", "meaningEn": "Sun" },
+        { "id": "g4_l2_2",  "word": "சந்திரன்",    "meaning": "இரவில் ஒளிரும் கோள்",         "meaningEn": "Moon" },
+        { "id": "g4_l2_3",  "word": "நட்சத்திரம்", "meaning": "வானில் ஒளிரும் கோளங்கள்",    "meaningEn": "Star" },
+        { "id": "g4_l2_4",  "word": "மலை",         "meaning": "உயரமான நிலப்பகுதி",           "meaningEn": "Mountain" },
+        { "id": "g4_l2_5",  "word": "கடல்",        "meaning": "உப்பு நீர் நிரம்பிய பெரும் நீர்நிலை", "meaningEn": "Sea" },
+        { "id": "g4_l2_6",  "word": "ஆறு",         "meaning": "மலையிலிருந்து வரும் நீர்",     "meaningEn": "River" },
+        { "id": "g4_l2_7",  "word": "வானம்",       "meaning": "மேலே நீலமாக தெரியும் வெளி",   "meaningEn": "Sky" },
+        { "id": "g4_l2_8",  "word": "மேகம்",       "meaning": "மழை தரும் நீர்த்துளிகள்",     "meaningEn": "Cloud" },
+        { "id": "g4_l2_9",  "word": "இடி",         "meaning": "மேகங்கள் உண்டாக்கும் ஒலி",   "meaningEn": "Thunder" },
+        { "id": "g4_l2_10", "word": "மின்னல்",     "meaning": "வானில் தோன்றும் ஒளி",        "meaningEn": "Lightning" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "வீட்டு பொருட்கள்",
+      "words": [
+        { "id": "g4_l3_1",  "word": "நாற்காலி",   "meaning": "அமர்வதற்கான கருவி",       "meaningEn": "Chair" },
+        { "id": "g4_l3_2",  "word": "மேசை",       "meaning": "வேலை செய்யும் தட்டு",     "meaningEn": "Table" },
+        { "id": "g4_l3_3",  "word": "கட்டில்",    "meaning": "தூங்குவதற்கான இடம்",      "meaningEn": "Bed" },
+        { "id": "g4_l3_4",  "word": "கண்ணாடி",    "meaning": "பார்க்கும் தட்டு",        "meaningEn": "Mirror" },
+        { "id": "g4_l3_5",  "word": "விசிறி",     "meaning": "காற்று உண்டாக்கும் கருவி", "meaningEn": "Fan" },
+        { "id": "g4_l3_6",  "word": "விளக்கு",    "meaning": "ஒளி தரும் கருவி",         "meaningEn": "Lamp" },
+        { "id": "g4_l3_7",  "word": "தொலைக்காட்சி", "meaning": "படங்கள் காட்டும் பெட்டி", "meaningEn": "Television" },
+        { "id": "g4_l3_8",  "word": "குளிர்பதனப்பெட்டி", "meaning": "உணவு குளிர வைக்கும் கருவி", "meaningEn": "Refrigerator" },
+        { "id": "g4_l3_9",  "word": "அடுப்பு",    "meaning": "சமையல் செய்யும் கருவி",   "meaningEn": "Stove" },
+        { "id": "g4_l3_10", "word": "தொலைபேசி",   "meaning": "தொலைவில் பேசும் கருவி",   "meaningEn": "Telephone" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "grade": 7,
+  "displayName": "7th Standard",
+  "tamilName": "ஏழாம் வகுப்பு",
+  "icon": "📙",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "இலக்கணச் சொற்கள்",
+      "words": [
+        { "id": "g7_l1_1",  "word": "வல்லினம்",       "meaning": "க ச ட த ப ற ஆகிய எழுத்துகள்",       "meaningEn": "Hard consonants" },
+        { "id": "g7_l1_2",  "word": "மெல்லினம்",      "meaning": "ங ஞ ண ந ம ன ஆகிய எழுத்துகள்",       "meaningEn": "Soft consonants" },
+        { "id": "g7_l1_3",  "word": "இடையினம்",       "meaning": "ய ர ல வ ழ ள ஆகிய எழுத்துகள்",       "meaningEn": "Medium consonants" },
+        { "id": "g7_l1_4",  "word": "குற்றியலுகரம்",  "meaning": "உகரம் குறுகி ஒலிக்கும் முறை",        "meaningEn": "Short u ending" },
+        { "id": "g7_l1_5",  "word": "அகரமுதலி",       "meaning": "சொற்களை அகர வரிசையில் தொகுத்த நூல்", "meaningEn": "Dictionary" },
+        { "id": "g7_l1_6",  "word": "வேற்றுமை",       "meaning": "பெயர்ச்சொல்லின் தொடர்பு காட்டும் விகுதி", "meaningEn": "Case suffix" },
+        { "id": "g7_l1_7",  "word": "திணை",           "meaning": "உயர்திணை மற்றும் அஃறிணை என இரு வகை", "meaningEn": "Category" },
+        { "id": "g7_l1_8",  "word": "பால்",           "meaning": "ஆண்பால் பெண்பால் என வகை",            "meaningEn": "Gender" },
+        { "id": "g7_l1_9",  "word": "எண்",            "meaning": "ஒருமை பன்மை என வகை",                 "meaningEn": "Number" },
+        { "id": "g7_l1_10", "word": "இடம்",           "meaning": "தன்மை முன்னிலை படர்க்கை என வகை",     "meaningEn": "Person" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "தமிழ் இலக்கியம்",
+      "words": [
+        { "id": "g7_l2_1",  "word": "திருக்குறள்",    "meaning": "திருவள்ளுவர் எழுதிய நூல்",           "meaningEn": "Thirukkural" },
+        { "id": "g7_l2_2",  "word": "சங்க இலக்கியம்", "meaning": "சங்க காலத்தில் எழுதப்பட்ட நூல்கள்", "meaningEn": "Sangam literature" },
+        { "id": "g7_l2_3",  "word": "அகப்பொருள்",    "meaning": "காதல் உணர்வை பற்றிய பொருள்",          "meaningEn": "Inner meaning" },
+        { "id": "g7_l2_4",  "word": "புறப்பொருள்",   "meaning": "வீரம் போரை பற்றிய பொருள்",            "meaningEn": "Outer meaning" },
+        { "id": "g7_l2_5",  "word": "கவிதை",         "meaning": "ஒழுங்கான சொல் அமைப்பு",              "meaningEn": "Poetry" },
+        { "id": "g7_l2_6",  "word": "செய்யுள்",      "meaning": "இலக்கண விதிப்படி அமைந்த பாடல்",      "meaningEn": "Verse" },
+        { "id": "g7_l2_7",  "word": "உரைநடை",        "meaning": "நேரடியான சொல் அமைப்பு",              "meaningEn": "Prose" },
+        { "id": "g7_l2_8",  "word": "நாடகம்",        "meaning": "மேடையில் நடிக்கும் கலை",              "meaningEn": "Drama" },
+        { "id": "g7_l2_9",  "word": "சிறுகதை",       "meaning": "சிறிய கதை வடிவம்",                   "meaningEn": "Short story" },
+        { "id": "g7_l2_10", "word": "புதினம்",        "meaning": "நீண்ட கதை வடிவம்",                   "meaningEn": "Novel" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "சமூக அறிவியல்",
+      "words": [
+        { "id": "g7_l3_1",  "word": "புவியியல்",      "meaning": "பூமியை பற்றி படிக்கும் துறை",         "meaningEn": "Geography" },
+        { "id": "g7_l3_2",  "word": "வரலாறு",         "meaning": "கடந்த காலத்தை படிக்கும் துறை",       "meaningEn": "History" },
+        { "id": "g7_l3_3",  "word": "குடிமையியல்",    "meaning": "குடிமக்களின் உரிமை கடமை பற்றிய துறை", "meaningEn": "Civics" },
+        { "id": "g7_l3_4",  "word": "பொருளாதாரம்",   "meaning": "பணம் வர்த்தகம் பற்றிய துறை",          "meaningEn": "Economics" },
+        { "id": "g7_l3_5",  "word": "கலாச்சாரம்",    "meaning": "ஒரு சமூகத்தின் பழக்கவழக்கங்கள்",     "meaningEn": "Culture" },
+        { "id": "g7_l3_6",  "word": "நாகரிகம்",      "meaning": "வளர்ந்த சமூக நிலை",                   "meaningEn": "Civilization" },
+        { "id": "g7_l3_7",  "word": "மக்கள்தொகை",    "meaning": "ஒரு இடத்தில் வாழும் மக்களின் எண்ணிக்கை", "meaningEn": "Population" },
+        { "id": "g7_l3_8",  "word": "இடம்பெயர்வு",   "meaning": "ஒரு இடத்திலிருந்து மற்றொரு இடம் செல்வது", "meaningEn": "Migration" },
+        { "id": "g7_l3_9",  "word": "வேளாண்மை",      "meaning": "விவசாயம் செய்யும் தொழில்",            "meaningEn": "Agriculture" },
+        { "id": "g7_l3_10", "word": "தொழில்துறை",    "meaning": "பொருட்கள் தயாரிக்கும் துறை",          "meaningEn": "Industry" }
+      ]
+    }
+  ]
+}

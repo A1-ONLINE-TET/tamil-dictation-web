@@ -1,0 +1,56 @@
+{
+  "grade": 1,
+  "displayName": "1st Standard",
+  "tamilName": "ஒன்றாம் வகுப்பு",
+  "icon": "🌱",
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "உயிர் எழுத்துகள்",
+      "words": [
+        { "id": "g1_l1_1",  "word": "அம்மா",    "meaning": "தாய்",       "meaningEn": "Mother" },
+        { "id": "g1_l1_2",  "word": "அப்பா",    "meaning": "தந்தை",     "meaningEn": "Father" },
+        { "id": "g1_l1_3",  "word": "ஆடு",      "meaning": "வீட்டு விலங்கு", "meaningEn": "Goat" },
+        { "id": "g1_l1_4",  "word": "இலை",      "meaning": "மரத்தின் பகுதி", "meaningEn": "Leaf" },
+        { "id": "g1_l1_5",  "word": "ஈ",        "meaning": "சிறு பூச்சி",   "meaningEn": "Fly" },
+        { "id": "g1_l1_6",  "word": "உடை",      "meaning": "ஆடை",       "meaningEn": "Dress" },
+        { "id": "g1_l1_7",  "word": "ஊசி",      "meaning": "தையல் கருவி", "meaningEn": "Needle" },
+        { "id": "g1_l1_8",  "word": "எலி",      "meaning": "சிறு விலங்கு", "meaningEn": "Rat" },
+        { "id": "g1_l1_9",  "word": "ஏணி",      "meaning": "ஏற பயன்படும் கருவி", "meaningEn": "Ladder" },
+        { "id": "g1_l1_10", "word": "ஐந்து",    "meaning": "5 என்ற எண்",  "meaningEn": "Five" }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "எளிய சொற்கள்",
+      "words": [
+        { "id": "g1_l2_1",  "word": "பூ",        "meaning": "மலர்",        "meaningEn": "Flower" },
+        { "id": "g1_l2_2",  "word": "மரம்",      "meaning": "தாவரம்",      "meaningEn": "Tree" },
+        { "id": "g1_l2_3",  "word": "தண்ணீர்",  "meaning": "நீர்",         "meaningEn": "Water" },
+        { "id": "g1_l2_4",  "word": "பால்",      "meaning": "வெண்மையான திரவம்", "meaningEn": "Milk" },
+        { "id": "g1_l2_5",  "word": "சோறு",      "meaning": "சமைத்த அரிசி", "meaningEn": "Rice" },
+        { "id": "g1_l2_6",  "word": "வீடு",      "meaning": "இல்லம்",       "meaningEn": "House" },
+        { "id": "g1_l2_7",  "word": "நாய்",      "meaning": "வீட்டு விலங்கு", "meaningEn": "Dog" },
+        { "id": "g1_l2_8",  "word": "பூனை",      "meaning": "வீட்டு விலங்கு", "meaningEn": "Cat" },
+        { "id": "g1_l2_9",  "word": "மீன்",      "meaning": "நீர் வாழ் உயிர்", "meaningEn": "Fish" },
+        { "id": "g1_l2_10", "word": "பறவை",      "meaning": "வானில் பறக்கும் உயிர்", "meaningEn": "Bird" }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "உடல் உறுப்புகள்",
+      "words": [
+        { "id": "g1_l3_1",  "word": "கண்",       "meaning": "பார்க்கும் உறுப்பு",  "meaningEn": "Eye" },
+        { "id": "g1_l3_2",  "word": "காது",      "meaning": "கேட்கும் உறுப்பு",  "meaningEn": "Ear" },
+        { "id": "g1_l3_3",  "word": "மூக்கு",    "meaning": "மணம் உணரும் உறுப்பு", "meaningEn": "Nose" },
+        { "id": "g1_l3_4",  "word": "வாய்",      "meaning": "பேசும் உறுப்பு",    "meaningEn": "Mouth" },
+        { "id": "g1_l3_5",  "word": "கை",        "meaning": "பிடிக்கும் உறுப்பு", "meaningEn": "Hand" },
+        { "id": "g1_l3_6",  "word": "கால்",      "meaning": "நடக்கும் உறுப்பு",  "meaningEn": "Leg" },
+        { "id": "g1_l3_7",  "word": "தலை",       "meaning": "உடலின் மேல் பகுதி", "meaningEn": "Head" },
+        { "id": "g1_l3_8",  "word": "பல்",       "meaning": "மெல்லும் உறுப்பு",  "meaningEn": "Tooth" },
+        { "id": "g1_l3_9",  "word": "நாக்கு",    "meaning": "சுவை உணரும் உறுப்பு", "meaningEn": "Tongue" },
+        { "id": "g1_l3_10", "word": "விரல்",     "meaning": "கை மற்றும் கால் நுனி", "meaningEn": "Finger" }
+      ]
+    }
+  ]
+}
